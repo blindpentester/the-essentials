@@ -10,7 +10,7 @@
 fix_sources() {
 	echo "deb http://http.kali.org/kali kali-rolling main non-free contrib" > /etc/apt/sources.list
 	echo "deb-src http://http.kali.org/kali kali-rolling main non-free contrib" >> /etc/apt/sources.list
-	sudo apt update && sudo apt upgrade -y && sudo apt autoclean -y && sudo apt autoremove -y && apt full-upgrade -y && apt dist-upgrade -y
+	sudo apt update && sudo apt upgrade -y && sudo apt autoclean -y && sudo apt autoremove -y
 	}
 
 
