@@ -161,6 +161,7 @@ install_knockpy() {
 install_nmap_vulners() {
 	FOLDER=/opt/nmap-vulners
 	if [ -d "$FOLDER" ]
+	then
 		echo "$FOLDER already exists.  Skipping to next item."
 		install_navi
 	else
