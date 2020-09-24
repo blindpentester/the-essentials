@@ -14,6 +14,11 @@ fix_sources() {
 	}
 
 
+install_go() {
+	sudo apt install golang -y
+	}
+
+
 install_terminator() {
 	sudo apt install terminator -y
 	}
@@ -317,10 +322,18 @@ install_gobuster() {
 		apt install gobuster -y
 	fi
 	}
+	
+	
+install_recursivegobuster() {
+	cd /opt/
+	git clone https://github.com/epi052/recursive-gobuster.git
+	
+	}
 
 	
 
 fix_sources
+install_go
 pimpmykali
 install_ffuf
 install_p0wny_shell
