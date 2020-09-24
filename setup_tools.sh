@@ -7,7 +7,10 @@
 # chmod +x setup_tools.sh
 # ./setup_tools.sh
 
-
+fix_sources() {
+	echo "deb http://http.kali.org/kali kali-rolling main non-free contrib" > /etc/apt/sources.list
+	echo "deb-src http://http.kali.org/kali kali-rolling main non-free contrib" >> /etc/apt/sources.list
+}
 
 
 pimpmykali() {
