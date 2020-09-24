@@ -285,7 +285,7 @@ installing_asnlookup() {
 		intstall_evil_winrm
 	else
 		cd /opt
-		sudo git clone https://github.com/yassineaboukir/asnlookup.sudo git
+		sudo git clone https://github.com/yassineaboukir/asnlookup.git
 		cd asnlookup
 		pip3 install -r requirements.txt
 	fi	
