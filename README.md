@@ -6,7 +6,7 @@ Fixing sources in /etc/apt/sources.list
 <br />
 ### Installing the following items:  
   
-* grab and run "pimpmykali" from https://github.com/Dewalt-arch/pimpmykali  
+* "pimpmykali" from https://github.com/Dewalt-arch/pimpmykali  
 * ffuf  
 * p0wny-shell  
 * dirsearch  
