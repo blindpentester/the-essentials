@@ -36,7 +36,7 @@ pimpmykali() {
 		cd /opt/
 		sudo git clone https://github.com/Dewalt-arch/pimpmykali.git
 		cd pimpmykali
-		chmod +x pimpmykali.sh
+		sudo chmod +x pimpmykali.sh
 		./pimpmykali.sh
 	fi
 }
