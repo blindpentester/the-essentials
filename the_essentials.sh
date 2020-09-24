@@ -306,6 +306,19 @@ install_more_wordlists() {
 	sudo git clone https://github.com/ZephrFish/Wordlists.git
 	}
 	
+	
+install_gobuster() {
+	echo "Installing GoBuster..."
+	FOLDER=/opt/gobuster
+	if [ -f "$FOLDER" ]
+	then
+		echo "Gobuster seems to be installed already."
+	else
+		apt install gobuster -y
+	fi
+	}
+
+	
 
 fix_sources
 pimpmykali
@@ -327,3 +340,4 @@ installing_asnlookup
 install_evil_winrm
 install_powercat
 install_more_wordlists
+install_gobuster
