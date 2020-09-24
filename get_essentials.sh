@@ -303,12 +303,6 @@ install_powercat() {
 }
 
 
-install_more_wordlists() {
-	echo "Getting more wordlists..."
-	cd /opt
-	sudo git clone https://github.com/ZephrFish/Wordlists.git
-}
-
 fix_sources
 install_terminato
 pimpmykali
@@ -329,4 +323,3 @@ install_sublist3r
 installing_asnlookup
 install_evil_winrm
 install_powercat
-install_more_wordlists
