@@ -201,7 +201,7 @@ install_navi() {
 		cd navi
 		# Installing Dependency FZF
 		sudo apt install fzf
-		bash < (curl -sL https://raw.githubusercontent.com/denisidoro/navi/master/scripts/install)
+		bash <(curl -sL https://raw.githubusercontent.com/denisidoro/navi/master/scripts/install)
 	fi
 }
 
