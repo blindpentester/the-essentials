@@ -273,7 +273,7 @@ installing_asnlookup() {
 	if [ -f "$FILE" ]
 	then
 		echo "asnlookup is already setup.  Skipping to next item."
-		PALACEHOLDER
+		intstall_evil_winrm
 	else
 		cd /opt
 		git clone https://github.com/yassineaboukir/asnlookup.git
@@ -311,11 +311,13 @@ install_PEAS
 install_aquatone
 install_rsg
 install_knockpy
+install_nmap_vulners
+install_gtfoblookup
 install_navi
 install_tomnomnom_stuff
 install_nahmsec_stuff
-install_sublist3r
 install_Bloodhound
+install_sublist3r
 installing_asnlookup
 install_evil_winrm
 install_powercat
