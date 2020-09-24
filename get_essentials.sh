@@ -10,6 +10,12 @@
 fix_sources() {
 	echo "deb http://http.kali.org/kali kali-rolling main non-free contrib" > /etc/apt/sources.list
 	echo "deb-src http://http.kali.org/kali kali-rolling main non-free contrib" >> /etc/apt/sources.list
+	sudo apt update && sudo apt upgrade -y && sudo apt-autoclean -y && sudo apt autoremove -y && sudo apt full-upgrade -y && sudo apt dist-upgrade -y
+}
+
+
+install_terminator(){
+	sudo apt install terminator -y
 }
 
 
@@ -28,7 +34,7 @@ pimpmykali() {
 		echo "***************************************"
 		sleep 5
 		cd /opt/
-		git clone https://github.com/Dewalt-arch/pimpmykali.git
+		sudo git clone https://github.com/Dewalt-arch/pimpmykali.git
 		cd pimpmykali
 		chmod +x pimpmykali.sh
 		./pimpmykali.sh
@@ -44,7 +50,7 @@ install_ffuf() {
 		p0wny_shell
 	else
 		cd /opt
-		git clone https://github.com/ffuf/ffuf.git
+		sudo git clone https://github.com/ffuf/ffuf.git
 		cd ffuf
 		go build
 		ln -s /opt/ffuf/ffuf /usr/bin/ffuf
@@ -61,7 +67,7 @@ install_p0wny_shell() {
 		install_dirsearch
 	else
 		cd /opt/
-		git clone https://github.com/flozz/p0wny-shell.git
+		sudo git clone https://github.com/flozz/p0wny-shell.git
 	fi
 }
 
@@ -74,7 +80,7 @@ install_dirsearch() {
 		install_PEAS
 	else
 		cd /opt/
-		git clone https://github.com/maurosoria/dirsearch.git
+		sudo git clone https://github.com/maurosoria/dirsearch.git
 		cd dirsearch
 		ln -s /opt/dirsearch.py /usr/bin/dirsearch
 	fi
@@ -91,7 +97,7 @@ install_PEAS() {
 		install_aquatone
 	else
 		cd /opt/
-		git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git
+		sudo git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git
 	fi
 }
 
@@ -106,11 +112,11 @@ install_aquatone() {
 		install_rsg
 	else
 		cd /opt/
-		git clone https://github.com/michenriksen/aquatone.git
+		sudo git clone https://github.com/michenriksen/aquatone.git
 		cd aquatone
-		go get github.com/michenriksen/aquatone
+		sudo go get github.com/michenriksen/aquatone
 		mv ~/go/bin/aquatone .
-		ln -s /opt/aquatone/aquatone /usr/bin/aquatone
+		sudo ln -s /opt/aquatone/aquatone /usr/bin/aquatone
 	fi
 }
 
@@ -125,7 +131,7 @@ install_rsg() {
 		install_knockpy
 	else
 		cd /opt/
-		git clone https://github.com/mthbernardes/rsg.git
+		sudo git clone https://github.com/mthbernardes/rsg.git
 		cd rsg
 		sh install.sh
 	fi
@@ -144,9 +150,9 @@ install_knockpy() {
 		install_nmap_vulners
 	else
 		cd /opt
-		git clone https://github.com/guelfoweb/knock.git
+		sudo git clone https://github.com/guelfoweb/knock.git
 		cd knock
-		apt-get install python-dnspython
+		sudo apt install python-dnspython
 		python setup.py install
 	fi
 }
@@ -159,19 +165,19 @@ install_nmap_vulners() {
 		install_navi
 	else
 		cd /opt
-		git clone https://github.com/vulnersCom/nmap-vulners.git
+		sudo git clone https://github.com/vulnersCom/nmap-vulners.git
 		cd nmap-vulners
 		cp nmap-vulners/http-vulners-regex.nse /usr/share/nmap/scripts/
 		cp http-vulners-regex.json /usr/share/nmap/nselib/data/
 		cp http-vulners-paths.txt /usr/share/nmap/nselib/data/
-		nmap --script-updatedb
+		sudo nmap --script-updatedb
 	fi
 }
 
 
  install_gtfoblookup() {
 	cd /opt/
-	git clone https://github.com/nccgroup/GTFOBLookup.git
+	sudo git clone https://github.com/nccgroup/GTFOBLookup.git
 	cd GTFOBLookup
 	pip3 install -r requirements.txt
 	python3 gtfoblookup.py update
@@ -190,10 +196,10 @@ install_navi() {
 		install_tomnomnom_stuff
 	else
 		cd /opt/
-		git clone https://github.com/denisidoro/navi.git
+		sudo git clone https://github.com/denisidoro/navi.git
 		cd navi
 		# Installing Dependency FZF
-		apt install fzf
+		sudo apt install fzf
 		bash < (curl -sL https://raw.githubusercontent.com/denisidoro/navi/master/scripts/install)
 	fi
 }
@@ -202,38 +208,38 @@ install_navi() {
 install_tomnomnom_stuff() {
 	# Installing HTTPROBE
 	cd /opt/
-	git clone https://github.com/tomnomnom/httprobe.git
+	sudo git clone https://github.com/tomnomnom/httprobe.git
 	cd httprobe
-	go build
-	ln -s /opt/httprobe /usr/bin/httprobe
+	sudo go build
+	sudo ln -s /opt/httprobe /usr/bin/httprobe
 	cd ..
 
 	# Installing WayBackURLS
 	cd /opt/
-	git clone https://github.com/tomnomnom/waybackurls.git
+	sudo git clone https://github.com/tomnomnom/waybackurls.git
 	cd waybackurls
-	go build
-	ln -s /opt/waybackurls/waybackurls /usr/bin/waybackurls
+	sudo go build
+	sudo ln -s /opt/waybackurls/waybackurls /usr/bin/waybackurls
 
 	# Installing HACKS Repository
 	cd /opt
-	git clone https://github.com/tomnomnom/hacks.git
+	sudo git clone https://github.com/tomnomnom/hacks.git
 	
 	# Installing UNFURL
 	cd /opt
-	git clone https://github.com/obsidianforensics/unfurl.git
+	sudo git clone https://github.com/obsidianforensics/unfurl.git
 	
 }
 
 
 install_nahamsec_stuff() {
 	cd /opt
-	git clone https://github.com/nahamsec/lazyrecon.git
+	sudo git clone https://github.com/nahamsec/lazyrecon.git
 	cd lazyrecon
-	ln -s /opt/lazyrecon/lazyrecon.sh /usr/share/lazyrecon
+	sudo ln -s /opt/lazyrecon/lazyrecon.sh /usr/share/lazyrecon
 	cd /opt
-	git clone https://github.com/nahamsec/crtndstry.git
-	git clone https://github.com/nahamsec/JSParser.git
+	sudo git clone https://github.com/nahamsec/crtndstry.git
+	sudo git clone https://github.com/nahamsec/JSParser.git
 	cd JSParser
 	python2.7 setup install	
 
@@ -252,17 +258,17 @@ install_Bloodhound() {
 		wget -O - https://debian.neo4j.com/neotechnology.gpg.key | sudo apt-key add -
 		echo 'deb https://debian.neo4j.com stable 4.0' > /etc/apt/sources.list.d/neo4j.list
 		sudo apt-get update
-		apt-get install neo4j -y
-		apt install bloodhound -y
+		sudo apt-get install neo4j -y
+		sudo apt install bloodhound -y
 		cd /opt
-		git clone https://github.com/BloodHoundAD/SharpHound.git
+		sudo git clone https://github.com/BloodHoundAD/SharpHound.git
 	fi	
 }
 
 
 install_sublist3r() {
 	echo "installing sublist3r"
-	apt install sublist3r
+	sudo apt install sublist3r
 	echo "done"
 }
 
@@ -276,33 +282,34 @@ installing_asnlookup() {
 		intstall_evil_winrm
 	else
 		cd /opt
-		git clone https://github.com/yassineaboukir/asnlookup.git
+		sudo git clone https://github.com/yassineaboukir/asnlookup.git
 		cd asnlookup
-		pip3 install -r requirements.txt
+		sudo pip3 install -r requirements.txt
 	fi	
 }
 
 
 install_evil_winrm() {
 	echo "Installing Evil-WinRM..."
-	gem install evil-winrm
+	sudo gem install evil-winrm
 }
 
 
 install_powercat() {
 	echo "Installing Powercat..."
 	cd /opt
-	git clone https://github.com/besimorhino/powercat.git
+	sudo git clone https://github.com/besimorhino/powercat.git
 }
 
 
 install_more_wordlists() {
 	echo "Getting more wordlists..."
 	cd /opt
-	git clone https://github.com/ZephrFish/Wordlists.git
+	sudo git clone https://github.com/ZephrFish/Wordlists.git
 }
 
 fix_sources
+install_terminato
 pimpmykali
 install_ffuf
 install_p0wny_shell
