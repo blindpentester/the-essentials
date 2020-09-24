@@ -1,2 +1,27 @@
 # the-essentials
-A script that I made to get the essentials I use for various reasons on Kali Linux.
+A script that I made to get the essential tools I use for various reasons on Kali Linux.
+
+Installing the following items:
+
+grab and run "pimpmykali" from https://github.com/Dewalt-arch/pimpmykali
+ffuf
+p0wny-shell
+dirsearch
+privilege-escalation-awesome-scripts-suite
+aquatone
+Reverse Shell Generator
+knockpy
+navi
+httprobe
+waybackurls
+unfurl
+lazyrecon
+crtndstry
+JSParser
+neo4j & Bloodhound
+SharpHound
+sublist3r
+asnlookup
+Evil-WinRM
+Powercat
+Snagging more Wordlists
