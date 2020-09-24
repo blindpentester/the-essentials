@@ -6,6 +6,7 @@ Fixing sources in /etc/apt/sources.list
 <br />
 ### Installing the following items:  
   
+* golang  
 * "pimpmykali" from https://github.com/Dewalt-arch/pimpmykali  
 * ffuf  
 * p0wny-shell  
