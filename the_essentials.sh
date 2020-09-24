@@ -325,11 +325,33 @@ install_gobuster() {
 	
 	
 install_recursivegobuster() {
+	echo "Installing recursive-gobuster..."
 	cd /opt/
 	git clone https://github.com/epi052/recursive-gobuster.git
 	
 	}
 
+
+install_enum4linux_ng() {
+	echo "Installing enum4linux-ng..."
+	cd /opt
+	git clone https://github.com/cddmp/enum4linux-ng.git
+	cd enum4linux-ng
+	pip3 install -r requirements.txt
+	}
+
+install_evilportals_wifipineapple() {
+	echo "Installing Evil Portals for WiFI Pineapple..."
+	cd /opt
+	git clone https://github.com/kbeflo/evilportals.git
+	}
+
+install_stegoVeritas() {
+	echo "Installing stegoVeritas for all of those steganography nerds out there..."
+	pip3 install stegoveritas
+	stegoveritas_install_deps
+	}
+	
 	
 
 fix_sources
@@ -354,3 +376,7 @@ install_evil_winrm
 install_powercat
 install_more_wordlists
 install_gobuster
+install_recursivegobuster
+install_enum4linux_ng
+install_evilportals_wifipineapple
+install_stegoVeritas
