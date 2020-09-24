@@ -228,7 +228,7 @@ install_tomnomnom_stuff() {
 
 	# Installing HACKS Repository
 	cd /opt
-	sudo git clone https://github.com/tomnomnom/hacks.sudo git
+	sudo git clone https://github.com/tomnomnom/hacks.git
 	
 	# Installing UNFURL
 	cd /opt
