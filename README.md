@@ -1,6 +1,8 @@
 # the-essentials
 A script that I made to get the essential tools I use for various reasons on Kali Linux.<br />
 <br />
+Fixing sources in /etc/apt/sources.list<br />
+<br />
 Installing the following items:<br />
 <br />
 grab and run "pimpmykali" from https://github.com/Dewalt-arch/pimpmykali<br />
