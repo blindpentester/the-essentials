@@ -302,7 +302,7 @@ install_more_wordlists() {
 	git clone https://github.com/ZephrFish/Wordlists.git
 }
 
-
+fix_sources
 pimpmykali
 install_ffuf
 install_p0wny_shell
