@@ -28,3 +28,7 @@ Fixing sources in /etc/apt/sources.list
 * Evil-WinRM  
 * Powercat  
 * Snagging more Wordlists  
+* gobuster  
+* recursive-gobuster  
+* evilportals (WiFi Pineapple Evil Portals)  
+* stegoVertias  
