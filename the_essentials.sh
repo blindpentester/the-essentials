@@ -4,13 +4,12 @@
 #
 #
 # Usage: 
-# sudo chmod +x the_essentials.sh
-# sudo ./the_essentials.sh
+# chmod +x setup_tools.sh
+# ./setup_tools.sh
 
 fix_sources() {
 	echo "deb http://http.kali.org/kali kali-rolling main non-free contrib" > /etc/apt/sources.list
 	echo "deb-src http://http.kali.org/kali kali-rolling main non-free contrib" >> /etc/apt/sources.list
-  # Go ahead and run updates.  This can take a while...
 	sudo apt update && sudo apt upgrade -y && sudo apt autoclean -y && sudo apt autoremove -y && apt full-upgrade -y && apt dist-upgrade -y
 	}
 
@@ -199,10 +198,9 @@ install_navi() {
 		cd /opt/
 		sudo git clone https://github.com/denisidoro/navi.git
 		cd navi
-		make install
 		# Installing Dependency FZF
 		sudo apt install fzf
-		#bash <(curl -sL https://raw.githubusercontent.com/denisidoro/navi/master/scripts/install)
+		bash <(curl -sL https://raw.githubusercontent.com/denisidoro/navi/master/scripts/install)
 	fi
 	}
 
