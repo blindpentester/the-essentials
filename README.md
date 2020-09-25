@@ -1,11 +1,11 @@
 # the-essentials v0.01  
 A script that I made to get the essential tools I use for various reasons on Kali Linux.<br /><br />
 ## Usage:  
-cd /opt  
-sudo git clone https://github.com/blindpentester/the-essentials.git  
-cd the-essentials  
-sudo chmod +x the_essentials.sh  
-sudo ./the-essentials.sh  
+    cd /opt  
+    sudo git clone https://github.com/blindpentester/the-essentials.git  
+    cd the-essentials  
+    sudo chmod +x the_essentials.sh  
+    sudo ./the-essentials.sh  
   
 ### Various Fixes:  
 Fixing sources in /etc/apt/sources.list  
