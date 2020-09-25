@@ -364,6 +364,7 @@ snag_random_repos() {
 	sudo git clone https://github.com/Anon-Exploiter/SUID3NUM.git
 	sudo git clone https://github.com/sleventyeleven/linuxprivchecker.git
 	sudo git clone https://github.com/entynetproject/ehtools.git
+	sudo git clone https://github.com/jhaddix/tbhm.git
 	}
 
 install_ehtools() {
@@ -437,6 +438,56 @@ install_seclists() {
 	cd /usr/share/seclists/Discovery/DNS
 	sudo cat dns-Jhaddix.txt | head -n -14 > clean-jhaddix-dns.txt
 	}
+	
+	
+install_dnsdumpster() {
+	cd /opt
+	sudo git clone https://github.com/wangoloj/dnsdumpster.git
+	cd dnsdumpster
+	sudo pip3 install -r requirements.txt
+	}
+	
+	
+install_github_search() {
+	cd /opt
+	sudo git clone https://github.com/gwen001/github-search.git
+	sudo pip3 install -r requirements3.txt
+	}
+	
+	
+install_shodan_cli() {
+	sudo pip3 install shodan
+	}
+	
+	
+	
+install_interlace() {
+	cd /opt/
+	sudo git clone https://github.com/codingo/Interlace.git
+	cd Interlace
+	sudo python3 setup.py install
+	}
+	
+	
+install_certspotter() {
+	cd /opt
+	sudo git clone https://github.com/SSLMate/certspotter.git
+	sudo go get software.sslmate.com/src/certspotter/cmd/certspotter
+	sudo mv ~/go/bin/certspotter /opt/certspotter/certspotter
+	sudo ln -s /opt/certspotter/certspotter /usr/bin/certspotter
+	}
+	
+	
+	
+install_cloudbrute() {
+	cd /opt
+	sudo git clone https://github.com/jhaddix/CloudBrute.git
+	cd CloudBrute
+	sudo go build -o CloudBrute main.go
+	sudo ln -s /opt/CloudBrute/CloudBrute /usr/bin/CloudBrute
+	}
+	
+
 
 
 fix_sources
@@ -478,6 +529,14 @@ install_sherlock
 install_threader3000
 install_locate
 install_seclists
+install_dnsdumpster
+install_github_search
+install_shodan_cli
+install_interlac
+install_certspotter
+install_cloudbrute
+
+
 
 clear
 echo "Holy crap!!!  It's over!  FREEEEEEDOOOOOMMMMEEE!"
