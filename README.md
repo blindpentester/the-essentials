@@ -33,3 +33,10 @@ Fixing sources in /etc/apt/sources.list
 * recursive-gobuster  
 * evilportals (WiFi Pineapple Evil Portals)  
 * stegoVertias  
+* CrackMapExec  
+* Ehtools  
+* legion  
+* dnstwist  
+* spoofcheck  
+* autoenum  
+* easysploit  
