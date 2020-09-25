@@ -138,7 +138,7 @@ install_rsg() {
 		cd /opt/
 		sudo git clone https://github.com/mthbernardes/rsg.git
 		cd rsg
-		sh install.sh
+		sudo sh install.sh
 	fi
 	}
 
