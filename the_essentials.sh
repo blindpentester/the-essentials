@@ -410,6 +410,12 @@ install_easysploit() {
 	sudo bash installer.sh
 	}
 
+install_sherlock(){
+	cd /opt
+	git clone https://github.com/sherlock-project/sherlock.git
+	cd sherlock
+	pip3 install -r requirements.txt
+	}
 
 
 fix_sources
@@ -446,6 +452,7 @@ install_dnstwist
 install_spoofcheck
 install_autoenum
 install_easysploit
+install_sherlock
 
 clear
 echo "Holy crap!!!  It's over!  FREEEEEEDOOOOOMMMMEEE!"
