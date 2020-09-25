@@ -412,9 +412,15 @@ install_easysploit() {
 
 install_sherlock(){
 	cd /opt
-	git clone https://github.com/sherlock-project/sherlock.git
+	sudo git clone https://github.com/sherlock-project/sherlock.git
 	cd sherlock
-	pip3 install -r requirements.txt
+	sudo pip3 install -r requirements.txt
+	}
+	
+	
+
+install_threader3000() {
+	sudo pip3 install threader3000
 	}
 
 
@@ -453,6 +459,7 @@ install_spoofcheck
 install_autoenum
 install_easysploit
 install_sherlock
+install_threader3000
 
 clear
 echo "Holy crap!!!  It's over!  FREEEEEEDOOOOOMMMMEEE!"
