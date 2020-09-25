@@ -2,7 +2,7 @@
 A script that I made to get the essential tools I use for various reasons on Kali Linux.<br /><br />
 ## Usage:  
 cd /opt  
-git clone https://github.com/blindpentester/the-essentials.git  
+sudo git clone https://github.com/blindpentester/the-essentials.git  
 cd the-essentials  
 sudo chmod +x the-essentials.sh  
 sudo ./the-essentials.sh  
