@@ -13,8 +13,9 @@ fix_sources() {
 	sudo apt update
 	}
 
-install_go() {
+install_go_and_python() {
 	sudo apt install golang -y
+	sudo apt install python3-pip python3-dev -y
 	}
 
 
@@ -529,7 +530,7 @@ install_massdns() {
 
 
 fix_sources
-install_go
+install_go_and_python
 install_terminator
 pimpmykali
 install_ffuf
