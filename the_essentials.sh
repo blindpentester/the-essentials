@@ -216,7 +216,7 @@ install_tomnomnom_stuff() {
 	sudo git clone https://github.com/tomnomnom/httprobe.git
 	cd httprobe
 	sudo go build
-	ln -s /opt/httprobe /usr/bin/httprobe
+	sudo ln -s /opt/httprobe /usr/bin/httprobe
 	cd ..
 
 	# Installing WayBackURLS
@@ -233,6 +233,9 @@ install_tomnomnom_stuff() {
 	# Installing UNFURL
 	cd /opt
 	sudo git clone https://github.com/obsidianforensics/unfurl.git
+	cd unfurl
+	sudo go build -o unfurl main.go
+	sudo ln -s /opt/unfurl/unfurl /usr/bin/unfurl
 	}
 
 
@@ -246,6 +249,9 @@ install_nahamsec_stuff() {
 	sudo git clone https://github.com/nahamsec/JSParser.git
 	cd JSParser
 	python2.7 setup install
+	cd /opt
+	sudo apt install jq -y
+	sudo apt install rename -y
 	}
 
 
