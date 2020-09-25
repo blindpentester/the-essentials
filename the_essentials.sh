@@ -16,6 +16,9 @@ fix_sources() {
 install_go_and_python() {
 	sudo apt install golang -y
 	sudo apt install python3-pip python3-dev -y
+	sudo curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+	sudo python get-pip.py
+	sudo rm get-pip.py
 	}
 
 
