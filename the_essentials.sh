@@ -532,7 +532,7 @@ install_seclists
 install_dnsdumpster
 install_github_search
 install_shodan_cli
-install_interlac
+install_interlace
 install_certspotter
 install_cloudbrute
 
