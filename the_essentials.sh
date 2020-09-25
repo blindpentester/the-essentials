@@ -487,6 +487,16 @@ install_cloudbrute() {
 	sudo ln -s /opt/CloudBrute/CloudBrute /usr/bin/CloudBrute
 	}
 	
+	
+	
+install_gau() {
+	cd /opt
+	sudo git clone https://github.com/lc/gau.git
+	cd gau
+	sudo go build -o gau
+	sudo ln -s /opt/gau/gau /usr/bin/gau
+	}
+	
 
 
 
@@ -535,7 +545,7 @@ install_shodan_cli
 install_interlace
 install_certspotter
 install_cloudbrute
-
+install_gau
 
 
 clear
