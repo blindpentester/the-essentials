@@ -352,7 +352,56 @@ install_stegoVeritas() {
 	stegoveritas_install_deps
 	}
 	
+install_crackmapexec() {
+	echo "Installing CrackMapExec..."
+	sudo apt install crackmapexec -y	
+	}
+
+snag_random_repos() {
+	cd /opt
+	git clone https://github.com/thelinuxchoice/OSCP-Preparation-Material.git
+	git clone https://github.com/Anon-Exploiter/SUID3NUM.git
+	git clone https://github.com/sleventyeleven/linuxprivchecker.git
+	git clone https://github.com/entynetproject/ehtools.git
+	}
+
+install_ehtools() {
+	echo "Installing ehtools..."
+	cd /opt
+	sudo git clone git clone https://github.com/entynetproject/ehtools.git
+	cd ehtools
+	sudo chmod +x install.sh
+	sudo ./install.sh
+	}
 	
+	
+install_legion() {
+	cd /opt
+	sudo git clone https://github.com/carlospolop/legion.git
+	cd /opt/legion/git
+	sudo ./install.sh
+	sudo ln -s /opt/legion/legion.py /usr/bin/legion
+	}
+
+install_dnstwist() {
+	sudo pip3 install dnstwist
+	}
+	
+install_spoofcheck() {
+	cd /opt
+	sudo git clone https://github.com/BishopFox/spoofcheck.git
+	cd spoofchecker
+	sudo pip install -r requirements.txt
+	}
+
+install_autoenum() {
+	cd /opt
+	sudo git clone https://github.com/Gr1mmie/autoenum.git
+	cd autoenum
+	sudo chmod +x autoenum.sh
+	}
+
+
 
 fix_sources
 install_go
@@ -381,3 +430,9 @@ install_recursivegobuster
 install_enum4linux_ng
 install_evilportals_wifipineapple
 install_stegoVeritas
+install_crackmapexec
+install_ehtools
+install_legion
+install_dnstwist
+install_spoofcheck
+install_autoenum
