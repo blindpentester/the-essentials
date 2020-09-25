@@ -240,7 +240,7 @@ install_nahamsec_stuff() {
 	cd /opt
 	sudo git clone https://github.com/nahamsec/lazyrecon.git
 	cd lazyrecon
-	ln -s /opt/lazyrecon/lazyrecon.sh /usr/share/lazyrecon
+	sudo ln -s /opt/lazyrecon/lazyrecon.sh /usr/share/lazyrecon
 	cd /opt
 	sudo git clone https://github.com/nahamsec/crtndstry.git
 	sudo git clone https://github.com/nahamsec/JSParser.git
@@ -427,7 +427,7 @@ install_nmap_vulners
 install_gtfoblookup
 install_navi
 install_tomnomnom_stuff
-install_nahmsec_stuff
+install_nahamsec_stuff
 install_Bloodhound
 install_sublist3r
 installing_asnlookup
