@@ -433,6 +433,8 @@ install_locate() {
 
 install_seclists() {
 	sudo apt install seclists -y
+	cd /usr/share/seclists/Discovery/DNS
+	sudo cat dns-Jhaddix.txt | head -n -14 > clean-jhaddix-dns.txt
 	}
 
 
