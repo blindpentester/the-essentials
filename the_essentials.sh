@@ -234,7 +234,8 @@ install_tomnomnom_stuff() {
 	cd /opt
 	sudo git clone https://github.com/tomnomnom/unfurl.git
 	cd unfurl
-	sudo go build -o unfurl main.go
+	sudo go get -u github.com/tomnomnom/unfurl
+	sudo mv /root/go/bin/unfurl /opt/unfurl/
 	sudo ln -s /opt/unfurl/unfurl /usr/bin/unfurl
 	}
 
