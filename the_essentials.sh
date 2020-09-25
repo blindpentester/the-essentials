@@ -429,6 +429,11 @@ install_locate() {
 	sudo apt install locate -y
 	sudo updatedb
 	}
+	
+
+install_seclists() {
+	sudo apt install seclists -y
+	}
 
 
 fix_sources
@@ -468,6 +473,7 @@ install_easysploit
 install_sherlock
 install_threader3000
 install_locate
+install_seclists
 
 clear
 echo "Holy crap!!!  It's over!  FREEEEEEDOOOOOMMMMEEE!"
