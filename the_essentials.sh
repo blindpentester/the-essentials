@@ -232,7 +232,7 @@ install_tomnomnom_stuff() {
 	
 	# Installing UNFURL
 	cd /opt
-	sudo git clone https://github.com/obsidianforensics/unfurl.git
+	sudo git clone https://github.com/tomnomnom/unfurl.git
 	cd unfurl
 	sudo go build -o unfurl main.go
 	sudo ln -s /opt/unfurl/unfurl /usr/bin/unfurl
