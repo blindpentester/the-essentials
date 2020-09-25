@@ -216,7 +216,7 @@ install_tomnomnom_stuff() {
 	sudo git clone https://github.com/tomnomnom/httprobe.git
 	cd httprobe
 	sudo go build
-	sudo ln -s /opt/httprobe /usr/bin/httprobe
+	sudo ln -s /opt/httprobe/httprobe /usr/bin/httprobe
 	cd ..
 
 	# Installing WayBackURLS
