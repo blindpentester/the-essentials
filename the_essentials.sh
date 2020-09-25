@@ -390,7 +390,7 @@ install_dnstwist() {
 install_spoofcheck() {
 	cd /opt
 	sudo git clone https://github.com/BishopFox/spoofcheck.git
-	cd spoofchecker
+	cd spoofcheck
 	sudo pip install -r requirements.txt
 	}
 
