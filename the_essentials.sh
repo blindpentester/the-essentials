@@ -168,7 +168,7 @@ install_nmap_vulners() {
 	if [ -d "$FOLDER" ]
 	then
 		echo "$FOLDER already exists.  Skipping to next item."
-		install_navi
+		install_gtfoblookup
 	else
 		cd /opt
 		sudo git clone https://github.com/vulnersCom/nmap-vulners.git
