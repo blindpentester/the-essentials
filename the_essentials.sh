@@ -422,6 +422,13 @@ install_sherlock(){
 install_threader3000() {
 	sudo pip3 install threader3000
 	}
+	
+
+install_locate() {
+	echo "Installing locate..."
+	sudo apt install locate -y
+	sudo updatedb
+	}
 
 
 fix_sources
@@ -460,6 +467,7 @@ install_autoenum
 install_easysploit
 install_sherlock
 install_threader3000
+install_locate
 
 clear
 echo "Holy crap!!!  It's over!  FREEEEEEDOOOOOMMMMEEE!"
