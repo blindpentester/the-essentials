@@ -335,9 +335,9 @@ install_recursivegobuster() {
 install_enum4linux_ng() {
 	echo "Installing enum4linux-ng..."
 	cd /opt
-	git clone https://github.com/cddmp/enum4linux-ng.git
+	sudo git clone https://github.com/cddmp/enum4linux-ng.git
 	cd enum4linux-ng
-	pip3 install -r requirements.txt
+	sudo pip3 install -r requirements.txt
 	}
 
 install_evilportals_wifipineapple() {
