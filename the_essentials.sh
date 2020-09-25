@@ -446,3 +446,7 @@ install_dnstwist
 install_spoofcheck
 install_autoenum
 install_easysploit
+
+clear
+echo "Holy crap!!!  It's over!  FREEEEEEDOOOOOMMMMEEE!"
+echo "Now go forth and HACK THE PLANET!"
