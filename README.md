@@ -50,3 +50,8 @@ Fixing sources in /etc/apt/sources.list
 * threader3000  
 * locate  
 * seclists  
+* dnsdumpster  
+* shodan cli  
+* Interlace  
+* certspotter  
+* cloudbrute  
