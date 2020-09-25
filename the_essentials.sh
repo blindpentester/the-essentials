@@ -13,6 +13,11 @@ fix_sources() {
 	sudo apt update
 	}
 
+install_go() {
+	sudo apt install golang -y
+	}
+
+
 
 install_terminator() {
 	sudo apt install terminator -y
@@ -350,6 +355,8 @@ install_stegoVeritas() {
 	
 
 fix_sources
+install_go
+install_terminator
 pimpmykali
 install_ffuf
 install_p0wny_shell
