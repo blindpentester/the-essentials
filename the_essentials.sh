@@ -374,17 +374,7 @@ snag_random_repos() {
 	sudo git clone https://github.com/thelinuxchoice/OSCP-Preparation-Material.git
 	sudo git clone https://github.com/Anon-Exploiter/SUID3NUM.git
 	sudo git clone https://github.com/sleventyeleven/linuxprivchecker.git
-	sudo git clone https://github.com/entynetproject/ehtools.git
 	sudo git clone https://github.com/jhaddix/tbhm.git
-	}
-
-install_ehtools() {
-	echo "Installing ehtools..."
-	cd /opt
-	sudo git clone git clone https://github.com/entynetproject/ehtools.git
-	cd ehtools
-	sudo chmod +x install.sh
-	sudo ./install.sh
 	}
 	
 	
@@ -561,7 +551,6 @@ install_evilportals_wifipineapple
 install_stegoVeritas
 install_crackmapexec
 snag_random_repos
-install_ehtools
 install_legion
 install_dnstwist
 install_spoofcheck
