@@ -402,6 +402,15 @@ install_autoenum() {
 	}
 
 
+install_easysploit() {
+	echo "Installing easysploit..."
+	cd /opt
+	git clone https://github.com/KALILINUXTRICKSYT/easysploit.git
+	cd easysploit
+	sudo bash installer.sh
+	}
+
+
 
 fix_sources
 install_go
@@ -436,3 +445,4 @@ install_legion
 install_dnstwist
 install_spoofcheck
 install_autoenum
+install_easysploit
