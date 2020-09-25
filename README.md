@@ -40,3 +40,5 @@ Fixing sources in /etc/apt/sources.list
 * spoofcheck  
 * autoenum  
 * easysploit  
+* sherlock  
+* threader3000  
