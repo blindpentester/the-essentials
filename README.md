@@ -56,3 +56,5 @@ Fixing sources in /etc/apt/sources.list
 * certspotter  
 * cloudbrute  
 * gau  
+* masscan (removes preinstalled and installs from source)  
+* massdns  
