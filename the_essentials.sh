@@ -271,7 +271,7 @@ install_Bloodhound() {
 
 install_sublist3r() {
 	echo "installing sublist3r"
-	sudo apt install sublist3r
+	sudo apt install sublist3r -y
 	echo "done"
 	}
 
@@ -318,8 +318,9 @@ install_gobuster() {
 	if [ -f "$FOLDER" ]
 	then
 		echo "Gobuster seems to be installed already."
+		install_recursivegobuster
 	else
-		apt install gobuster -y
+		sudo apt install gobuster -y
 	fi
 	}
 	
@@ -327,7 +328,7 @@ install_gobuster() {
 install_recursivegobuster() {
 	echo "Installing recursive-gobuster..."
 	cd /opt/
-	git clone https://github.com/epi052/recursive-gobuster.git
+	sudo git clone https://github.com/epi052/recursive-gobuster.git
 	
 	}
 
