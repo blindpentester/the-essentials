@@ -238,7 +238,7 @@ install_tomnomnom_stuff() {
 
 install_nahamsec_stuff() {
 	cd /opt
-	sudo git clone https://sudo github.com/nahamsec/lazyrecon.git
+	sudo git clone https://github.com/nahamsec/lazyrecon.git
 	cd lazyrecon
 	ln -s /opt/lazyrecon/lazyrecon.sh /usr/share/lazyrecon
 	cd /opt
