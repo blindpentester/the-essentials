@@ -6,10 +6,10 @@ git clone https://github.com/blindpentester/the-essentials.git
 cd the-essentials  
 sudo chmod +x the-essentials.sh  
 sudo ./the-essentials.sh  
-<br />
+  
 ### Various Fixes:  
 Fixing sources in /etc/apt/sources.list  
-<br />
+  
 ### Installing the following items:  
   
 * golang  
