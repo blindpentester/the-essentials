@@ -466,6 +466,7 @@ install_enum4linux_ng
 install_evilportals_wifipineapple
 install_stegoVeritas
 install_crackmapexec
+snag_random_repos
 install_ehtools
 install_legion
 install_dnstwist
