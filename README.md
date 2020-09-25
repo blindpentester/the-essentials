@@ -48,3 +48,5 @@ Fixing sources in /etc/apt/sources.list
 * easysploit  
 * sherlock  
 * threader3000  
+* locate  
+* seclists  
