@@ -497,6 +497,27 @@ install_gau() {
 	sudo ln -s /opt/gau/gau /usr/bin/gau
 	}
 	
+	
+	
+install_masscan() {
+	echo "Removing preinstalled masscan and installing masscan from source..."
+	sudo apt purge masscan -y
+	cd /opt
+	sudo apt-get install git gcc make libpcap-dev -y
+	sudo git clone https://github.com/robertdavidgraham/masscan.git
+	cd masscan
+	sudo make
+	sudo ln -s /opt/masscan/bin/masscan /usr/bin/masscan
+	}
+	
+
+install_massdns() {
+	cd /opt
+	sudo git clone https://github.com/blechschmidt/massdns.git
+	cd massdns
+	sudo make
+	sudo ln -s /opt/massdns/bin/massdns /usr/bin/massdns
+	}
 
 
 
@@ -546,6 +567,9 @@ install_interlace
 install_certspotter
 install_cloudbrute
 install_gau
+install_masscan
+install_massdns
+
 
 
 clear
