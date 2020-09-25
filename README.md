@@ -40,7 +40,6 @@ Fixing sources in /etc/apt/sources.list
 * evilportals (WiFi Pineapple Evil Portals)  
 * stegoVertias  
 * CrackMapExec  
-* Ehtools  
 * legion  
 * dnstwist  
 * spoofcheck  
