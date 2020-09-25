@@ -294,7 +294,7 @@ installing_asnlookup() {
 
 install_evil_winrm() {
 	echo "Installing Evil-WinRM..."
-	gem install evil-winrm
+	sudo gem install evil-winrm
 	}
 
 
@@ -343,12 +343,12 @@ install_enum4linux_ng() {
 install_evilportals_wifipineapple() {
 	echo "Installing Evil Portals for WiFI Pineapple..."
 	cd /opt
-	git clone https://github.com/kbeflo/evilportals.git
+	sudo git clone https://github.com/kbeflo/evilportals.git
 	}
 
 install_stegoVeritas() {
 	echo "Installing stegoVeritas for all of those steganography nerds out there..."
-	pip3 install stegoveritas
+	sudo pip3 install stegoveritas
 	stegoveritas_install_deps
 	}
 	
@@ -359,10 +359,10 @@ install_crackmapexec() {
 
 snag_random_repos() {
 	cd /opt
-	git clone https://github.com/thelinuxchoice/OSCP-Preparation-Material.git
-	git clone https://github.com/Anon-Exploiter/SUID3NUM.git
-	git clone https://github.com/sleventyeleven/linuxprivchecker.git
-	git clone https://github.com/entynetproject/ehtools.git
+	sudo git clone https://github.com/thelinuxchoice/OSCP-Preparation-Material.git
+	sudo git clone https://github.com/Anon-Exploiter/SUID3NUM.git
+	sudo git clone https://github.com/sleventyeleven/linuxprivchecker.git
+	sudo git clone https://github.com/entynetproject/ehtools.git
 	}
 
 install_ehtools() {
