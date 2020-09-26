@@ -15,10 +15,16 @@ fix_sources() {
 
 install_go_and_python() {
 	sudo apt install golang -y
-	sudo apt install python3-pip python3-dev -y
-	sudo curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-	sudo python get-pip.py
-	sudo rm get-pip.py
+	#sudo apt install python3-pip python3-dev -y
+	#sudo curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+	#sudo python get-pip.py
+	#sudo rm get-pip.py
+	
+	# Installing PyCrypto
+	#cd /opt
+	#sudo git clone https://github.com/pycrypto/pycrypto.git
+	#cd pycrypto
+	#sudo python setup.py install
 	}
 
 
@@ -452,6 +458,7 @@ install_dnsdumpster() {
 install_github_search() {
 	cd /opt
 	sudo git clone https://github.com/gwen001/github-search.git
+	cd github-search
 	sudo pip3 install -r requirements3.txt
 	}
 	
