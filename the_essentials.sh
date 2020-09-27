@@ -6,10 +6,6 @@
 # Usage: 
 # sudo chmod +x the_essentials.sh
 # sudo ./the_essentials.sh
-if [ "$EUID" -ne 0 ]
-	then echo -e "\n\n Script must be run with sudo ./the_essentials.sh or as root \n"
-       exit
-fi
 
 red=$'\e[1;31m'
 grn=$'\e[1;32m'
@@ -17,6 +13,11 @@ blu=$'\e[1;34m'
 mag=$'\e[1;35m'
 cyn=$'\e[1;36m'
 white=$'\e[0m'
+
+if [ "$EUID" -ne 0 ]
+	then echo -e $grn"\n\n Script must be run with sudo ./the_essentials.sh or as root \n"$white
+       exit
+fi
 
 fix_sources() {
 	echo $grn"Fixing sources..."$white
