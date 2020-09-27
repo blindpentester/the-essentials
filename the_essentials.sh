@@ -4,8 +4,12 @@
 #
 #
 # Usage: 
-# chmod +x setup_tools.sh
-# ./setup_tools.sh
+# sudo chmod +x the_essentials.sh
+# sudo ./the_essentials.sh
+if [ "$EUID" -ne 0 ]
+	then echo -e "\n\n Script must be run with sudo ./the_essentials.sh or as root \n"
+       exit
+fi
 
 red=$'\e[1;31m'
 grn=$'\e[1;32m'
