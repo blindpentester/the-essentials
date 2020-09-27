@@ -583,7 +583,7 @@ install_dirsearch
 install_PEAS
 install_aquatone
 install_rsg
-install_knockpy
+#install_knockpy
 install_nmap_vulners
 install_gtfoblookup
 install_navi
