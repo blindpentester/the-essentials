@@ -3,7 +3,7 @@ A script that I made to get the essential tools I use for various reasons on Kal
 ## Usage:  
     cd /opt  
     sudo git clone https://github.com/blindpentester/the-essentials.git  
-    cd the_essentials  
+    cd the-essentials  
     sudo chmod +x the_essentials.sh  
     sudo ./the_essentials.sh  
   
