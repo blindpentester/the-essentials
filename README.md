@@ -3,9 +3,9 @@ A script that I made to get the essential tools I use for various reasons on Kal
 ## Usage:  
     cd /opt  
     sudo git clone https://github.com/blindpentester/the-essentials.git  
-    cd the-essentials  
+    cd the_essentials  
     sudo chmod +x the_essentials.sh  
-    sudo ./the-essentials.sh  
+    sudo ./the_essentials.sh  
   
 ### Various Fixes:  
 Fixing sources in /etc/apt/sources.list  
