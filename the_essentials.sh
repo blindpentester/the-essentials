@@ -4,7 +4,6 @@
 #
 #
 # Usage: 
-# sudo chmod +x the_essentials.sh
 # sudo ./the_essentials.sh
 
 red=$'\e[1;31m'
