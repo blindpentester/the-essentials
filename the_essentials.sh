@@ -111,7 +111,6 @@ install_dirsearch() {
 		echo "$FOLDER already exists.  Skipping to next item..."
 		install_PEAS
 	else
-		echo $grn"Installing dirsearch..."$white
 		cd /opt/
 		sudo git clone https://github.com/maurosoria/dirsearch.git >/dev/null 2>&1
 		cd dirsearch
@@ -475,8 +474,8 @@ install_locate() {
 install_seclists() {
 	echo $grn"Installing SecLists..."$white
 	sudo apt install seclists -y >/dev/null 2>&1
-	sudo cat /usr/share/seclists/Discovery/DNS/dns-Jhaddix.txt | head -n -14 > ~/Desktop/clean-jhaddix-dns.txt
-	sudo mv ~/Desktop/clean-jhaddix-dns.txt /usr/share/seclists/Discovery/DNS/clean-jhaddix-dns.txt
+	sudo cat /usr/share/seclists/Discovery/DNS/dns-Jhaddix.txt | head -n -14 > /tmp/clean-jhaddix-dns.txt
+	sudo mv /tmp/clean-jhaddix-dns.txt /usr/share/seclists/Discovery/DNS/clean-jhaddix-dns.txt
 	}
 	
 	
