@@ -316,7 +316,6 @@ install_Bloodhound() {
 install_sublist3r() {
 	echo $grn"Installing sublist3r"$white
 	sudo apt install sublist3r -y >/dev/null 2>&1
-	echo "done"
 	}
 
 
