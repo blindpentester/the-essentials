@@ -475,8 +475,8 @@ install_locate() {
 install_seclists() {
 	echo $grn"Installing SecLists..."$white
 	sudo apt install seclists -y >/dev/null 2>&1
-	cd /usr/share/seclists/Discovery/DNS
-	sudo cat dns-Jhaddix.txt | head -n -14 > clean-jhaddix-dns.txt 1> /dev/null
+	sudo cat /usr/share/seclists/Discovery/DNS/dns-Jhaddix.txt | head -n -14 > ~/Desktop/clean-jhaddix-dns.txt
+	sudo mv ~/Desktop/clean-jhaddix-dns.txt /usr/share/seclists/Discovery/DNS/clean-jhaddix-dns.txt
 	}
 	
 	
