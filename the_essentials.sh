@@ -283,7 +283,6 @@ install_nahamsec_stuff() {
 	sudo sed -i 's/~\/tools/\/opt/g' lazyrecon.sh 1> /dev/null
 	sudo sed -i 's/python \/opt\/Sublist3r\/sublist3r.py/sublist3r/g' lazyrecon.sh 1> /dev/null
 	sudo sed -i 's/\/opt\/SecLists/\/usr\/share\/seclists/g' lazyrecon.sh 1> /dev/null
-	sudo cat /usr/share/seclists/Discovery/DNS/dns-Jhaddix.txt | head -n -14 > /usr/share/seclists/Discovery/DNS/clean-jhaddix-dns.txt 1> /dev/null
 
 
 	cd /opt
