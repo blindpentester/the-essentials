@@ -19,14 +19,11 @@ Fixing sources in /etc/apt/sources.list
 * privilege-escalation-awesome-scripts-suite  
 * aquatone  
 * Reverse Shell Generator  
-* knockpy  
 * navi  
 * httprobe  
 * waybackurls  
 * unfurl  
-* lazyrecon  
 * crtndstry  
-* JSParser  
 * neo4j & Bloodhound  
 * SharpHound  
 * sublist3r  
@@ -39,7 +36,6 @@ Fixing sources in /etc/apt/sources.list
 * evilportals (WiFi Pineapple Evil Portals)  
 * stegoVertias  
 * CrackMapExec  
-* legion  
 * dnstwist  
 * spoofcheck  
 * autoenum  
@@ -55,3 +51,6 @@ Fixing sources in /etc/apt/sources.list
 * cloudbrute  
 * gau   
 * massdns  
+* AutoRecon  
+* hetty  
+* Atom  
