@@ -590,7 +590,7 @@ install_hetty() {
 
 
 install_atom() {
-	echo $grn"Installing Atom because it is kang of GUI text editors..."$white
+	echo $grn"Installing Atom..."$white
 	sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'  1> /dev/null
 	wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | apt-key add - 
 	apt update >/dev/null 2>&1
