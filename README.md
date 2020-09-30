@@ -1,4 +1,4 @@
-# the-essentials v0.01  
+# the-essentials v0.02  
 A script that I made to get the essential tools I use for various reasons on Kali Linux.<br /><br />
 ## Usage:  
     cd /opt  
@@ -57,3 +57,16 @@ python3-pip
 * AutoRecon  
 * hetty  
 * Atom  
+  
+  
+## v0.01  
+* initial script was set to run at new VM image.  Not intended to run multiple times.  Very rough draft.  
+* installed tools but did not check if they existed already  
+  
+  
+## Things to fix  
+        Would like to eventually have a menu option to go through and skip anything that the users would want to go past.  
+        Going to correct the auto installation/trying to setup tomnomnom items.  Will break those out into their own functions.  
+        I am sure more things will arrise.  
+  
+  
