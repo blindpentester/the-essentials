@@ -69,7 +69,7 @@ python3-pip
   
   
 ## Things to fix  
-        Would like to eventually have a menu option to go through and skip anything that the users would want to go past.   
-        I am sure more things will arise.  
+* Would like to eventually have a menu option to go through and skip anything that the users would want to go past.   
+* I am sure more things will arise.  
   
   
