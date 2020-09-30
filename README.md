@@ -59,6 +59,9 @@ python3-pip
 * hetty  
 * Atom  
   
+## v0.02
+* Checks for installs and will move to the next if it sees file/folder exists already.  This way it will only add the items that you currently don't have or will skip and continue through.
+  
   
 ## v0.01  
 * initial script was set to run at new VM image.  Not intended to run multiple times.  Very rough draft.  
