@@ -26,6 +26,7 @@ python3-pip
 * httprobe  
 * waybackurls  
 * unfurl  
+* fff  
 * crtndstry  
 * neo4j & Bloodhound  
 * SharpHound  
