@@ -65,8 +65,7 @@ python3-pip
   
   
 ## Things to fix  
-        Would like to eventually have a menu option to go through and skip anything that the users would want to go past.  
-        Going to correct the auto installation/trying to setup tomnomnom items.  Will break those out into their own functions.  
+        Would like to eventually have a menu option to go through and skip anything that the users would want to go past.   
         I am sure more things will arrise.  
   
   
