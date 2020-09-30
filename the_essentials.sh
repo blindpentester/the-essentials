@@ -204,7 +204,7 @@ install_nmap_vulners() {
 		cp http-vulners-regex.nse /usr/share/nmap/scripts/ 1> /dev/null
 		cp http-vulners-regex.json /usr/share/nmap/nselib/data/ 1> /dev/null
 		cp http-vulners-paths.txt /usr/share/nmap/nselib/data/ 1> /dev/null
-		wget https://svn.nmap.org/nmap/scripts/clamav-exec.nse -O /usr/share/nmap/scripts/clamav-exec.nse
+		wget https://svn.nmap.org/nmap/scripts/clamav-exec.nse -O /usr/share/nmap/scripts/clamav-exec.nse >/dev/null 2>&1
 		nmap --script-updatedb 1> /dev/null
 	fi
 	}
