@@ -79,7 +79,7 @@ pimpmykali() {
 	FILE=/opt/pimpmykali/pimpmykali.sh
 	if [ -f "$FILE" ]
 	then
-		echo $grn"$FILE already exists.  Skipping to next item."$white
+		echo $grn"pimpmykali already exists.  Skipping to next item."$white
 	else
 		echo "***************************************"
 		echo "*                                     *"
@@ -116,7 +116,7 @@ install_p0wny_shell() {
 	FILE=/opt/p0wny-shell/README.md
 	if [ -f "$FILE" ] 
 	then
-		echo $grn"$FILE exists already, moving on to next item..."$white
+		echo $grn"p0wny-shell exists already, moving on to next item..."$white
 	else
 		echo $grn"Setting up p0wny-shell..."$white
 		cd /opt/
@@ -144,7 +144,7 @@ install_PEAS() {
 	FOLDER=/opt/privilege-escalation-awesome-scripts-suite
 	if [ -d "$FOLDER" ]
 	then
-		echo $grn"Installing Privilege Escalation Awesome Scripts Suite already exists.  Skipping to next item..."$white
+		echo $grn"Privilege Escalation Awesome Scripts Suite already exists.  Skipping to next item..."$white
 	else
 		echo $grn"Installing Privilege Escalation Awesome Scripts Suite..."$white
 		cd /opt/
@@ -187,12 +187,12 @@ install_rsg() {
 
 
 install_nmap_vulners() {
-	echo $grn"Installing NMAP Vulners Scripts..."$white
 	FOLDER=/opt/nmap-vulners
 	if [ -d "$FOLDER" ]
 	then
-		echo $grn"$FOLDER already exists.  Skipping to next item."$white
+		echo $grn"nmap vulners already exists.  Skipping to next item."$white
 	else
+		echo $grn"Installing NMAP Vulners Scripts..."$white
 		cd /opt
 		git clone https://github.com/vulnersCom/nmap-vulners.git >/dev/null 2>&1
 		cd nmap-vulners
@@ -238,36 +238,64 @@ install_navi() {
 	}
 
 
-install_tomnomnom_stuff() {
-	echo $grn"Installing HTTPROBE..."$white
-	cd /opt/
-	git clone https://github.com/tomnomnom/httprobe.git >/dev/null 2>&1
-	cd httprobe
-	go build 1> /dev/null
-	ln -s /opt/httprobe/httprobe /usr/bin/httprobe >/dev/null 2>&1
-	cd ..
 
-	# Installing WayBackURLS
-	echo $grn"Installing WayBackURLS..."$white
-	cd /opt/
-	git clone https://github.com/tomnomnom/waybackurls.git >/dev/null 2>&1
-	cd waybackurls
-	go build 1> /dev/null
-	ln -s /opt/waybackurls/waybackurls /usr/bin/waybackurls >/dev/null 2>&1
-
-	# Installing HACKS Repository
-	echo $grn"Installing HACKS Repository..."$white
-	cd /opt
-	git clone https://github.com/tomnomnom/hacks.git >/dev/null 2>&1
+install_tom_httprobe() {
+	if ! [ -x "$(command -v httprobe)" ]
+	then
+		echo $grn"Installing httprobe..."$white
+		cd /opt/
+		git clone https://github.com/tomnomnom/httprobe.git >/dev/null 2>&1
+		cd httprobe
+		go build 1> /dev/null
+		ln -s /opt/httprobe/httprobe /usr/bin/httprobe >/dev/null 2>&1	
+	else
+		echo $grn"httprobe appears to be installed already.  moving along..."$white
+	fi
 	
-	# Installing UNFURL
-	echo $grn"Installing UnFURL..."$white
-	cd /opt
-	git clone https://github.com/tomnomnom/unfurl.git >/dev/null 2>&1
-	cd unfurl
-	go get -u github.com/tomnomnom/unfurl 1> /dev/null
-	mv /root/go/bin/unfurl /opt/unfurl/ 1> /dev/null
-	ln -s /opt/unfurl/unfurl /usr/bin/unfurl >/dev/null 2>&1
+	}
+
+
+install_tom_waybackurls() {
+	if ! [ -x "$(command -v waybackurls)" ]
+	then
+		echo $grn"Installing waybackurls..."$white
+		cd /opt/
+		git clone https://github.com/tomnomnom/waybackurls.git >/dev/null 2>&1
+		cd waybackurls
+		go build 1> /dev/null
+		ln -s /opt/waybackurls/waybackurls /usr/bin/waybackurls >/dev/null 2>&1
+	else 
+		echo $grn"waybackurls appears to be installed already.  moving along..."$white
+	fi
+	}
+
+
+install_tom_unfurl() {
+	if ! [ -x "$(command -v unfurl)" ]
+	then
+		echo $grn"Installing UnFURL..."$white
+		cd /opt
+		git clone https://github.com/tomnomnom/unfurl.git >/dev/null 2>&1
+		cd unfurl
+		go get -u github.com/tomnomnom/unfurl 1> /dev/null
+		mv /root/go/bin/unfurl /opt/unfurl/ 1> /dev/null
+		ln -s /opt/unfurl/unfurl /usr/bin/unfurl >/dev/null 2>&1
+	else
+		echo $grn"unfurl appears to be installed already.  moving along..."$white
+	fi
+	}
+
+
+install_tom_hacks() {
+	FOLDER=/opt/hacks
+	if [ -d "$FOLDER" ]
+	then
+		echo $grn"hacks repo appears to be installed already.  moving along..."$white
+	else
+		echo $grn"Installing hacks repository..."$white
+		cd /opt
+		git clone https://github.com/tomnomnom/hacks.git >/dev/null 2>&1
+	fi
 	}
 
 
@@ -330,7 +358,7 @@ install_sublist3r() {
 
 installing_asnlookup() {
 	echo $grn"Installing asnlookup..."$white
-	FILE=/opt/asnlookup
+	FOLDER=/opt/asnlookup
 	if [ -d "$FOLDER" ]
 	then
 		echo $grn"asnlookup is already setup.  Skipping to next item."$white
@@ -355,7 +383,7 @@ install_evil_winrm() {
 
 
 install_powercat() {
-	FILE=/opt/powercat
+	FOLDER=/opt/powercat
 	if [ -d "$FOLDER" ]
 	then
 		echo $grn"powercat is already setup..."$white
@@ -368,7 +396,7 @@ install_powercat() {
 
 
 install_more_wordlists() {
-	FILE=/opt/Wordlists
+	FOLDER=/opt/Wordlists
 	if [ -d "$FOLDER" ]
 	then
 		echo $grn"Wordlists is already setup..."$white
@@ -393,7 +421,7 @@ install_gobuster() {
 	
 	
 install_recursivegobuster() {
-	FILE=/opt/recursive-gobuster
+	FOLDER=/opt/recursive-gobuster
 	if [ -d "$FOLDER" ]
 	then
 		echo $grn"recursive-gobuster appears to be installed already.  moving along..."$white
@@ -406,7 +434,7 @@ install_recursivegobuster() {
 
 
 install_enum4linux_ng() {
-	FILE=/opt/enum4linux-ng
+	FOLDER=/opt/enum4linux-ng
 	if [ -d "$FOLDER" ]
 	then
 		echo $grn"enum4linux-ng appears to be installed already.  moving along..."$white
@@ -421,7 +449,7 @@ install_enum4linux_ng() {
 
 
 install_evilportals_wifipineapple() {
-	FILE=/opt/evilportals
+	FOLDER=/opt/evilportals
 	if [ -d "$FOLDER" ]
 	then
 		echo $grn"evilportals appears to be installed already.  moving along..."$white
@@ -476,7 +504,7 @@ install_dnstwist() {
 	}
 	
 install_spoofcheck() {
-	FILE=/opt/spoofcheck
+	FOLDER=/opt/spoofcheck
 	if [ -d "$FOLDER" ]
 	then
 		echo $grn"spoofcheck appears to be installed already.  moving along..."$white
@@ -490,7 +518,7 @@ install_spoofcheck() {
 	}
 
 install_autoenum() {
-	FILE=/opt/autoenum
+	FOLDER=/opt/autoenum
 	if [ -d "$FOLDER" ]
 	then
 		echo $grn"autoenum appears to be installed already.  moving along..."$white
@@ -520,7 +548,7 @@ install_easysploit() {
 
 
 install_sherlock(){
-	FILE=/opt/sherlock
+	FOLDER=/opt/sherlock
 	if [ -d "$FOLDER" ]
 	then
 		echo $grn"sherlock appears to be installed already.  moving along..."$white
@@ -574,7 +602,7 @@ install_seclists() {
 	
 	
 install_dnsdumpster() {
-	FILE=/opt/dnsdumpster
+	FOLDER=/opt/dnsdumpster
 	if [ -d "$FOLDER" ]
 	then
 		echo $grn"dnsdumpster appears to be installed already.  moving along..."$white
@@ -589,7 +617,7 @@ install_dnsdumpster() {
 	
 	
 install_github_search() {
-	FILE=/opt/github-search
+	FOLDER=/opt/github-search
 	if [ -d "$FOLDER" ]
 	then
 		echo $grn"github-search appears to be installed already.  moving along..."$white
@@ -616,7 +644,7 @@ install_shodan_cli() {
 	
 	
 install_interlace() {
-	FILE=/opt/Interlace
+	FOLDER=/opt/Interlace
 	if [ -d "$FOLDER" ]
 	then
 		echo $grn"Interlace appears to be installed already.  moving along..."$white
@@ -760,7 +788,10 @@ install_rsg
 install_nmap_vulners
 install_gtfoblookup
 install_navi
-install_tomnomnom_stuff
+install_tom_httprobe
+install_tom_waybackurls
+install_tom_unfurl
+install_tom_hacks
 install_nahamsec_stuff
 install_neo4j
 install_bloodhound
