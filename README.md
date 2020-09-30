@@ -8,7 +8,10 @@ A script that I made to get the essential tools I use for various reasons on Kal
   
 ### Various Fixes:  
 Fixing sources in /etc/apt/sources.list  
-  
+NMAP clamav-exec.nse
+python-pip  
+python3-pip  
+
 ### Installing the following items:  
   
 * golang  
