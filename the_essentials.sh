@@ -284,6 +284,24 @@ install_tom_unfurl() {
 		echo $grn"unfurl appears to be installed already.  moving along..."$white
 	fi
 	}
+	
+	
+
+install_tom_fff() {
+	if ! [ -x "$(command -v fff)" ]
+	then
+		echo $grn"Installing fff..."$white
+		cd /opt
+		git clone https://github.com/tomnomnom/fff.git >/dev/null 2>&1
+		cd fff
+		go build >/dev/null 2>&1
+		ln -s /opt/fff/fff /usr/bin/fff >/dev/null 2>&1
+	else
+		echo $grn"fff appears to be installed already.  moving along..."$white
+	fi
+
+	}
+	
 
 
 install_tom_hacks() {
@@ -791,6 +809,7 @@ install_navi
 install_tom_httprobe
 install_tom_waybackurls
 install_tom_unfurl
+install_tom_fff
 install_tom_hacks
 install_nahamsec_stuff
 install_neo4j
