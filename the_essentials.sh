@@ -116,7 +116,7 @@ install_p0wny_shell() {
 	FILE=/opt/p0wny-shell/README.md
 	if [ -f "$FILE" ] 
 	then
-		echo "$FILE exists already, moving on to next item..."
+		echo $grn"$FILE exists already, moving on to next item..."$white
 	else
 		echo $grn"Setting up p0wny-shell..."$white
 		cd /opt/
@@ -132,7 +132,7 @@ install_dirsearch() {
 		cd /opt/
 		git clone https://github.com/maurosoria/dirsearch.git >/dev/null 2>&1
 		cd dirsearch
-		ln -s /opt/dirsearch.py /usr/bin/dirsearch >/dev/null 2>&1
+		ln -s /opt/dirsearch/dirsearch.py /usr/bin/dirsearch >/dev/null 2>&1
 	else
 		echo $grn"dirsearch appears to be installed already.  moving along..."$white
 	fi
@@ -141,12 +141,12 @@ install_dirsearch() {
 
 
 install_PEAS() {
-	echo $grn"Installing Privilege Escalation Awesome Scripts Suite..."$white
 	FOLDER=/opt/privilege-escalation-awesome-scripts-suite
 	if [ -d "$FOLDER" ]
 	then
 		echo $grn"Installing Privilege Escalation Awesome Scripts Suite already exists.  Skipping to next item..."$white
 	else
+		echo $grn"Installing Privilege Escalation Awesome Scripts Suite..."$white
 		cd /opt/
 		git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git >/dev/null 2>&1
 	fi
@@ -330,8 +330,8 @@ install_sublist3r() {
 
 installing_asnlookup() {
 	echo $grn"Installing asnlookup..."$white
-	FILE=/opt/asnlookup/asnlookup.py
-	if [ -f "$FILE" ]
+	FILE=/opt/asnlookup
+	if [ -d "$FOLDER" ]
 	then
 		echo $grn"asnlookup is already setup.  Skipping to next item."$white
 	else
@@ -356,9 +356,9 @@ install_evil_winrm() {
 
 install_powercat() {
 	FILE=/opt/powercat
-	if [ -f "$FILE" ]
+	if [ -d "$FOLDER" ]
 	then
-		echo $grn"powercat is already in /opt/ directory..."$white
+		echo $grn"powercat is already setup..."$white
 	else
 		echo $grn"Installing Powercat..."$white
 		cd /opt
@@ -369,9 +369,9 @@ install_powercat() {
 
 install_more_wordlists() {
 	FILE=/opt/Wordlists
-	if [ -f "$FILE" ]
+	if [ -d "$FOLDER" ]
 	then
-		echo $grn"Wordlists is already in /opt/ directory..."$white
+		echo $grn"Wordlists is already setup..."$white
 	else
 		echo $grn"Getting more wordlists..."$white
 		cd /opt
@@ -394,7 +394,7 @@ install_gobuster() {
 	
 install_recursivegobuster() {
 	FILE=/opt/recursive-gobuster
-	if [ -f "$FILE" ]
+	if [ -d "$FOLDER" ]
 	then
 		echo $grn"recursive-gobuster appears to be installed already.  moving along..."$white
 	else
@@ -407,7 +407,7 @@ install_recursivegobuster() {
 
 install_enum4linux_ng() {
 	FILE=/opt/enum4linux-ng
-	if [ -f "$FILE" ]
+	if [ -d "$FOLDER" ]
 	then
 		echo $grn"enum4linux-ng appears to be installed already.  moving along..."$white
 	else
@@ -422,7 +422,7 @@ install_enum4linux_ng() {
 
 install_evilportals_wifipineapple() {
 	FILE=/opt/evilportals
-	if [ -f "$FILE" ]
+	if [ -d "$FOLDER" ]
 	then
 		echo $grn"evilportals appears to be installed already.  moving along..."$white
 	else
@@ -477,7 +477,7 @@ install_dnstwist() {
 	
 install_spoofcheck() {
 	FILE=/opt/spoofcheck
-	if [ -f "$FILE" ]
+	if [ -d "$FOLDER" ]
 	then
 		echo $grn"spoofcheck appears to be installed already.  moving along..."$white
 	else
@@ -491,7 +491,7 @@ install_spoofcheck() {
 
 install_autoenum() {
 	FILE=/opt/autoenum
-	if [ -f "$FILE" ]
+	if [ -d "$FOLDER" ]
 	then
 		echo $grn"autoenum appears to be installed already.  moving along..."$white
 	else
@@ -521,7 +521,7 @@ install_easysploit() {
 
 install_sherlock(){
 	FILE=/opt/sherlock
-	if [ -f "$FILE" ]
+	if [ -d "$FOLDER" ]
 	then
 		echo $grn"sherlock appears to be installed already.  moving along..."$white
 	else
@@ -575,7 +575,7 @@ install_seclists() {
 	
 install_dnsdumpster() {
 	FILE=/opt/dnsdumpster
-	if [ -f "$FILE" ]
+	if [ -d "$FOLDER" ]
 	then
 		echo $grn"dnsdumpster appears to be installed already.  moving along..."$white
 	else
@@ -590,7 +590,7 @@ install_dnsdumpster() {
 	
 install_github_search() {
 	FILE=/opt/github-search
-	if [ -f "$FILE" ]
+	if [ -d "$FOLDER" ]
 	then
 		echo $grn"github-search appears to be installed already.  moving along..."$white
 	else
@@ -617,7 +617,7 @@ install_shodan_cli() {
 	
 install_interlace() {
 	FILE=/opt/Interlace
-	if [ -f "$FILE" ]
+	if [ -d "$FOLDER" ]
 	then
 		echo $grn"Interlace appears to be installed already.  moving along..."$white
 	else
