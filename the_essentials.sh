@@ -14,7 +14,7 @@ cyn=$'\e[1;36m'
 white=$'\e[0m'
 
 if [ "$EUID" -ne 0 ]
-	then echo -e $grn"\n\n Script must be run with sudo ./the_essentials.sh or as root \n"$white
+	then echo -e $grn"\n\n Script must be run with sudo ./the_essentials.sh or as root \n"$grn
        exit
 fi
 
@@ -25,26 +25,53 @@ fix_sources() {
 	apt update >/dev/null 2>&1
 	}
 
-install_go_and_python() {
-	echo $grn"Installing golang, python-pip, python3-pip..."$white
-	apt install golang -y >/dev/null 2>&1
-	apt install python3-pip python3-dev -y
-	curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-	python get-pip.py
-	rm get-pip.py
-	
-	# Installing PyCrypto
-	#cd /opt
-	#git clone https://github.com/pycrypto/pycrypto.git
-	#cd pycrypto
-	#python setup.py install
+install_go() {
+	if ! [ -x "$(command -v go)" ]
+    then
+        echo $grn"Installing golang..."$white
+        apt install golang -y >/dev/null 2>&1
+    else
+        echo $grn"golang already installed. move along..."$white
+    fi
 	}
 
 
+install_pip() {
+    if ! [ -x "$(command -v pip)" ]
+    then
+        echo $grn"Installing pip..."$white
+        curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py >/dev/null 2>&1
+        python get-pip.py >/dev/null 2>&1
+        rm get-pip.py
+    else
+        echo $grn"python-pip already installed. move along..."$white
+    fi
+
+        }
+
+	
+	
+
+install_pip3() {
+	if ! [ -x "$(command -v pip3)" ]
+	then
+		echo $grn"Installing pip3..."$white
+		apt install python3-pip -y >/dev/null 2>&1
+	else
+		echo $grn"pip3 already installed, move along..."$white
+	fi
+	
+	}
+
 
 install_terminator() {
-	echo $grn"Installing Terminator..."$white
-	apt install terminator -y >/dev/null 2>&1
+	if ! [ -x "$(command -v terminator)" ]
+	then
+		echo $grn"Installing Terminator..."$white
+		apt install terminator -y >/dev/null 2>&1
+	else
+		echo $grn"Terminator already installed, move along..."$white
+	fi
 	}
 
 
@@ -53,7 +80,6 @@ pimpmykali() {
 	if [ -f "$FILE" ]
 	then
 		echo $grn"$FILE already exists.  Skipping to next item."$white
-		install_ffuf
 	else
 		echo "***************************************"
 		echo "*                                     *"
@@ -65,24 +91,22 @@ pimpmykali() {
 		cd /opt/
 		git clone https://github.com/Dewalt-arch/pimpmykali.git >/dev/null 2>&1
 		cd pimpmykali
-		./pimpmykali.sh
+		./pimpmykali.sh --force
 	fi
 	}
 
 
 install_ffuf() {
-	FILE=/opt/ffuf/ffuf
-	if [ -f "$FILE" ] 
+	if ! [ -x "$(command -v ffuf)" ]
 	then
-		echo $grn"FFUF exists already, skipping install"$white
-		p0wny_shell
-	else
 		echo $grn"Installing ffuf..."$white
 		cd /opt
 		git clone https://github.com/ffuf/ffuf.git >/dev/null 2>&1
 		cd ffuf
 		go build 1> /dev/null
 		ln -s /opt/ffuf/ffuf /usr/bin/ffuf 1> /dev/null
+	else
+		echo $grn"ffuf already exists, move along..."$white
 	fi
 	}
 
@@ -93,7 +117,6 @@ install_p0wny_shell() {
 	if [ -f "$FILE" ] 
 	then
 		echo "$FILE exists already, moving on to next item..."
-		install_dirsearch
 	else
 		echo $grn"Setting up p0wny-shell..."$white
 		cd /opt/
@@ -103,17 +126,15 @@ install_p0wny_shell() {
 
 
 install_dirsearch() {
-	echo $grn"Installing dirsearch..."$white
-	FOLDER=/opt/dirsearch
-	if [ -d "$FOLDER" ]
+	if ! [ -x "$(command -v dirsearch)" ]
 	then
-		echo "$FOLDER already exists.  Skipping to next item..."
-		install_PEAS
-	else
+		echo $grn"Installing dirsearch..."$white
 		cd /opt/
 		git clone https://github.com/maurosoria/dirsearch.git >/dev/null 2>&1
 		cd dirsearch
-		ln -s /opt/dirsearch.py /usr/bin/dirsearch 1> /dev/null
+		ln -s /opt/dirsearch.py /usr/bin/dirsearch >/dev/null 2>&1
+	else
+		echo $grn"dirsearch appears to be installed already.  moving along..."$white
 	fi
 	}
 
@@ -124,8 +145,7 @@ install_PEAS() {
 	FOLDER=/opt/privilege-escalation-awesome-scripts-suite
 	if [ -d "$FOLDER" ]
 	then
-		echo "$FOLDER already exists.  Skipping to next item..."
-		install_aquatone
+		echo $grn"Installing Privilege Escalation Awesome Scripts Suite already exists.  Skipping to next item..."$white
 	else
 		cd /opt/
 		git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git >/dev/null 2>&1
@@ -135,58 +155,35 @@ install_PEAS() {
 
 
 install_aquatone() {
-	echo $grn"Installing Aquatone..."$white
-	FILE=/opt/aquatone/aquatone
-	if [ -f "/opt/aquatone/aquatone" ]
+	if ! [ -x "$(command -v aquatone)" ]
 	then
-		echo "$FILE already exists.  Skipping to next item..."
-		install_rsg
-	else
+		echo $grn"Installing aquatone..."$white
 		cd /opt/
 		git clone https://github.com/michenriksen/aquatone.git >/dev/null 2>&1
 		cd aquatone
 		go get github.com/michenriksen/aquatone 1> /dev/null
 		mv ~/go/bin/aquatone . 1> /dev/null
-		ln -s /opt/aquatone/aquatone /usr/bin/aquatone 1> /dev/null
+		ln -s /opt/aquatone/aquatone /usr/bin/aquatone >/dev/null 2>&1
+	else
+		echo $grn"aquatone appears to be installed already.  moving along..."$white
 	fi
 	}
 
 
 
 install_rsg() {
-	echo $grn"Installing Reverse Shell Generator..."$white
-	FILE=/opt/rsg/rsg
-	if [ -f "$FILE" ]
+	if ! [ -x "$(command -v rsg)" ]
 	then
-		echo "$FILE already exists.  Skipping to next item..."
-		install_knockpy
-	else
+		echo $grn"Installing Reverse Shell Generator..."$white
 		cd /opt/
 		git clone https://github.com/mthbernardes/rsg.git >/dev/null 2>&1
 		cd rsg
 		sh install.sh 1> /dev/null
-	fi
-	}
-
-
-install_knockpy() {
-	echo $grn"Installing KnockPY..."$white
-	FOLDER=/opt/knockpy
-	if [ -d "$FOLDER" ]
-	then
-		echo "$FOLDER already exists.  Skipping to next item".
-		echo ""
-		echo ""
-		echo ""
-		install_nmap_vulners
 	else
-		cd /opt
-		git clone https://github.com/guelfoweb/knock.git >/dev/null 2>&1
-		cd knock
-		apt install python-dnspython >/dev/null 2>&1
-		python setup.py install 1> /dev/null
+		echo $grn"rsg already installed.  moving along..."$white
 	fi
 	}
+
 
 
 install_nmap_vulners() {
@@ -194,8 +191,7 @@ install_nmap_vulners() {
 	FOLDER=/opt/nmap-vulners
 	if [ -d "$FOLDER" ]
 	then
-		echo "$FOLDER already exists.  Skipping to next item."
-		install_gtfoblookup
+		echo $grn"$FOLDER already exists.  Skipping to next item."$white
 	else
 		cd /opt
 		git clone https://github.com/vulnersCom/nmap-vulners.git >/dev/null 2>&1
@@ -210,23 +206,28 @@ install_nmap_vulners() {
 
 
  install_gtfoblookup() {
-	echo $grn"Installing GTFOBLookup..."$white
-	cd /opt/
-	git clone https://github.com/nccgroup/GTFOBLookup.git >/dev/null 2>&1
-	cd GTFOBLookup
-	pip3 install -r requirements.txt 1> /dev/null
-	python3 gtfoblookup.py update 1> /dev/null
+	FOLDER=/opt/GTFOBLookup
+	if [ -d "$FOLDER" ]
+	then
+		echo $grn"$FOLDER already exists.  Skipping to next item..."$white
+	else
+		echo $grn"Installing GTFOBLookup..."$white
+		cd /opt/
+		git clone https://github.com/nccgroup/GTFOBLookup.git >/dev/null 2>&1
+		cd GTFOBLookup
+		pip3 install -r requirements.txt 1> /dev/null
+		python3 gtfoblookup.py update 1> /dev/null
+	fi
 	}
 
 
 install_navi() {
-	echo $grn"Installing NAVI and FZF..."$white
 	FOLDER=/opt/navi
 	if [ -d "$FOLDER" ]
 	then
-		echo "$FOLDER already exists.  Skipping to next item."
-		install_tomnomnom_stuff
+		echo $grn"navi already exists.  Skipping to next item."$white
 	else
+		echo $grn"Installing NAVI and FZF..."$white
 		cd /opt/
 		git clone https://github.com/denisidoro/navi.git >/dev/null 2>&1
 		cd navi
@@ -243,7 +244,7 @@ install_tomnomnom_stuff() {
 	git clone https://github.com/tomnomnom/httprobe.git >/dev/null 2>&1
 	cd httprobe
 	go build 1> /dev/null
-	ln -s /opt/httprobe/httprobe /usr/bin/httprobe 1> /dev/null
+	ln -s /opt/httprobe/httprobe /usr/bin/httprobe >/dev/null 2>&1
 	cd ..
 
 	# Installing WayBackURLS
@@ -252,7 +253,7 @@ install_tomnomnom_stuff() {
 	git clone https://github.com/tomnomnom/waybackurls.git >/dev/null 2>&1
 	cd waybackurls
 	go build 1> /dev/null
-	ln -s /opt/waybackurls/waybackurls /usr/bin/waybackurls 1> /dev/null
+	ln -s /opt/waybackurls/waybackurls /usr/bin/waybackurls >/dev/null 2>&1
 
 	# Installing HACKS Repository
 	echo $grn"Installing HACKS Repository..."$white
@@ -266,7 +267,7 @@ install_tomnomnom_stuff() {
 	cd unfurl
 	go get -u github.com/tomnomnom/unfurl 1> /dev/null
 	mv /root/go/bin/unfurl /opt/unfurl/ 1> /dev/null
-	ln -s /opt/unfurl/unfurl /usr/bin/unfurl 1> /dev/null
+	ln -s /opt/unfurl/unfurl /usr/bin/unfurl >/dev/null 2>&1
 	}
 
 
@@ -291,28 +292,39 @@ install_nahamsec_stuff() {
 	}
 
 
-install_Bloodhound() {
-	echo $grn"Installing neo4j, Bloodhound and downloading SharpHound..."$white
-	FOLDER=/opt/Bloodhound
-	if [ -d "$FOLDER" ]
+install_neo4j() {
+	if ! [ -x "$(command -v neo4j)" ]
 	then
-		echo "Bloodhound is already installed.  Skipping to next item."
-		install_sublist3r
+		echo $grn"Installing neo4j..."$white
+		apt install neo4j -y >/dev/null 2>&1
 	else
-		wget -O - https://debian.neo4j.com/neotechnology.gpg.key | apt-key add -
-		echo 'deb https://debian.neo4j.com stable 4.0' > /etc/apt/sources.list.d/neo4j.list 1> /dev/null
-		apt-get update >/dev/null 2>&1
-		apt-get install neo4j >/dev/null 2>&1
-		apt install bloodhound -y >/dev/null 2>&1
-		cd /opt
-		git clone https://github.com/BloodHoundAD/SharpHound.git >/dev/null 2>&1
-	fi	
+		echo $grn"neo4j appears to be installed already.  moving along..."$white
+	fi
+
 	}
 
 
+install_bloodhound() {
+	if ! [ -x "$(command -v bloodhound)" ]
+	then
+		echo $grn"Installing bloodhound..."$white
+		apt install bloodhound -y >/dev/null 2>&1
+	else
+		echo $grn"bloodhound appears to be installed already.  moving along..."$white
+	fi
+	
+	}
+
+
+
 install_sublist3r() {
-	echo $grn"Installing sublist3r"$white
-	apt install sublist3r -y >/dev/null 2>&1
+	if ! [ -x "$(command -v sublist3r)" ]
+	then
+		echo $grn"Installing sublist3r"$white
+		apt install sublist3r -y >/dev/null 2>&1
+	else
+		echo $grn"sublist3r appears to be installed already.  moving along..."$white
+	fi
 	}
 
 
@@ -321,8 +333,7 @@ installing_asnlookup() {
 	FILE=/opt/asnlookup/asnlookup.py
 	if [ -f "$FILE" ]
 	then
-		echo "asnlookup is already setup.  Skipping to next item."
-		intstall_evil_winrm
+		echo $grn"asnlookup is already setup.  Skipping to next item."$white
 	else
 		cd /opt
 		git clone https://github.com/yassineaboukir/asnlookup.git >/dev/null 2>&1
@@ -333,72 +344,115 @@ installing_asnlookup() {
 
 
 install_evil_winrm() {
-	echo $grn"Installing Evil-WinRM..."$white
-	gem install evil-winrm 1> /dev/null
+	if ! [ -x "$(command -v evil-winrm)" ]
+	then
+		echo $grn"Installing Evil-WinRM..."$white
+		gem install evil-winrm 1> /dev/null
+	else
+		echo $grn"evil-winrm appears to be installed already.  moving along..."$white
+	fi
 	}
 
 
 install_powercat() {
-	echo $grn"Installing Powercat..."$white
-	cd /opt
-	git clone https://github.com/besimorhino/powercat.git >/dev/null 2>&1
+	FILE=/opt/powercat
+	if [ -f "$FILE" ]
+	then
+		echo $grn"powercat is already in /opt/ directory..."$white
+	else
+		echo $grn"Installing Powercat..."$white
+		cd /opt
+		git clone https://github.com/besimorhino/powercat.git >/dev/null 2>&1
+	fi
 	}
 
 
 install_more_wordlists() {
-	echo $grn"Getting more wordlists..."$white
-	cd /opt
-	git clone https://github.com/ZephrFish/Wordlists.git >/dev/null 2>&1
+	FILE=/opt/Wordlists
+	if [ -f "$FILE" ]
+	then
+		echo $grn"Wordlists is already in /opt/ directory..."$white
+	else
+		echo $grn"Getting more wordlists..."$white
+		cd /opt
+		git clone https://github.com/ZephrFish/Wordlists.git >/dev/null 2>&1
+	fi
 	}
 	
 	
 install_gobuster() {
-	echo $grn"Installing GoBuster..."$white
-	FOLDER=/opt/gobuster
-	if [ -f "$FOLDER" ]
+	if ! [ -x "$(command -v gobuster)" ]
 	then
-		echo "Gobuster seems to be installed already."
-		install_recursivegobuster
-	else
-		apt install gobuster -y >/dev/null 2>&1
+		echo $grn"Installing GoBuster..."$white
+		apt install gobuster -y >/dev/null 2>&1	
+	else	
+		echo $grn"gobuster appears to be installed already.  moving along..."$white
+
 	fi
 	}
 	
 	
 install_recursivegobuster() {
-	echo $grn"Installing recursive-gobuster..."$white
-	cd /opt/
-	git clone https://github.com/epi052/recursive-gobuster.git >/dev/null 2>&1
-	
+	FILE=/opt/recursive-gobuster
+	if [ -f "$FILE" ]
+	then
+		echo $grn"recursive-gobuster appears to be installed already.  moving along..."$white
+	else
+		echo $grn"Installing recursive-gobuster..."$white
+		cd /opt/
+		git clone https://github.com/epi052/recursive-gobuster.git >/dev/null 2>&1
+	fi
 	}
 
 
 install_enum4linux_ng() {
-	echo $grn"Installing enum4linux-ng..."$white
-	cd /opt
-	git clone https://github.com/cddmp/enum4linux-ng.git >/dev/null 2>&1
-	cd enum4linux-ng
-	pip3 install -r requirements.txt 1> /dev/null
+	FILE=/opt/enum4linux-ng
+	if [ -f "$FILE" ]
+	then
+		echo $grn"enum4linux-ng appears to be installed already.  moving along..."$white
+	else
+		echo $grn"Installing enum4linux-ng..."$white
+		cd /opt
+		git clone https://github.com/cddmp/enum4linux-ng.git >/dev/null 2>&1
+		cd enum4linux-ng
+		pip3 install -r requirements.txt 1> /dev/null
+	fi
 	}
 
 
 install_evilportals_wifipineapple() {
-	echo $grn"Installing Evil Portals for WiFI Pineapple..."$white
-	cd /opt
-	git clone https://github.com/kbeflo/evilportals.git >/dev/null 2>&1
+	FILE=/opt/evilportals
+	if [ -f "$FILE" ]
+	then
+		echo $grn"evilportals appears to be installed already.  moving along..."$white
+	else
+		echo $grn"Installing Evil Portals for WiFI Pineapple..."$white
+		cd /opt
+		git clone https://github.com/kbeflo/evilportals.git >/dev/null 2>&1
+	fi
 	}
 
 
 install_stegoVeritas() {
-	echo $grn"Installing stegoVeritas for all of those steganography nerds out there..."$white
-	pip3 install stegoveritas 1> /dev/null
-	stegoveritas_install_deps 1> /dev/null
+	if ! [ -x "$(command -v stegoveritas)" ]
+	then
+		echo $grn"Installing stegoVeritas for all of those steganography nerds out there..."$white
+		pip3 install stegoveritas 1> /dev/null
+		stegoveritas_install_deps 1> /dev/null
+	else
+		echo $grn"stegoVeritas appears to be installed already.  moving along..."$white
+	fi
 	}
 	
 
 install_crackmapexec() {
-	echo $grn"Installing CrackMapExec..."$white
-	apt install crackmapexec -y >/dev/null 2>&1
+	if ! [ -x "$(command -v crackmapexec)" ]
+	then
+		echo $grn"Installing CrackMapExec..."$white
+		apt install crackmapexec -y >/dev/null 2>&1
+	else
+		echo $grn"crackmapexec appears to be installed already.  moving along..."$white
+	fi
 	}
 
 snag_random_repos() {
@@ -412,197 +466,289 @@ snag_random_repos() {
 	
 
 install_dnstwist() {
-	echo $grn"Installing DNSTwist..."$white
-	pip3 install dnstwist 1> /dev/null
+	if ! [ -x "$(command -v dnstwist)" ]
+	then
+		echo $grn"Installing DNSTwist..."$white
+		pip3 install dnstwist 1> /dev/null
+	else
+		echo $grn"dnstwist appears to be installed already.  moving along..."$white
+	fi
 	}
 	
 install_spoofcheck() {
-	echo $grn"Installing spoofcheck..."$white
-	cd /opt
-	git clone https://github.com/BishopFox/spoofcheck.git >/dev/null 2>&1
-	cd spoofcheck
-	pip install -r requirements.txt 1> /dev/null
+	FILE=/opt/spoofcheck
+	if [ -f "$FILE" ]
+	then
+		echo $grn"spoofcheck appears to be installed already.  moving along..."$white
+	else
+		echo $grn"Installing spoofcheck..."$white
+		cd /opt
+		git clone https://github.com/BishopFox/spoofcheck.git >/dev/null 2>&1
+		cd spoofcheck
+		pip install -r requirements.txt 1> /dev/null
+	fi
 	}
 
 install_autoenum() {
-	echo $grn"Installing autoenum..."$white
-	cd /opt
-	git clone https://github.com/Gr1mmie/autoenum.git >/dev/null 2>&1
-	cd autoenum
-	chmod +x autoenum.sh 1> /dev/null
+	FILE=/opt/autoenum
+	if [ -f "$FILE" ]
+	then
+		echo $grn"autoenum appears to be installed already.  moving along..."$white
+	else
+		echo $grn"Installing autoenum..."$white
+		cd /opt
+		git clone https://github.com/Gr1mmie/autoenum.git >/dev/null 2>&1
+		cd autoenum
+		chmod +x autoenum.sh 1> /dev/null
+	fi
 	}
 
 
 install_easysploit() {
-	echo $grn"Installing easysploit..."$white
-	cd /opt
-	git clone https://github.com/KALILINUXTRICKSYT/easysploit.git >/dev/null 2>&1
-	cd easysploit
-	bash installer.sh 1> /dev/null
+	if ! [ -x "$(command -v easysploit)" ]
+	then
+		echo $grn"Installing easysploit..."$white
+		cd /opt
+		git clone https://github.com/KALILINUXTRICKSYT/easysploit.git >/dev/null 2>&1
+		cd easysploit
+		bash installer.sh 1> /dev/null
+	else
+		echo $grn"easysploit appears to be installed already.  moving along..."$white
+	fi
 	}
 
+
+
 install_sherlock(){
-	echo $grn"Installing sherlock..."$white
-	cd /opt
-	git clone https://github.com/sherlock-project/sherlock.git >/dev/null 2>&1
-	cd sherlock
-	pip3 install -r requirements.txt 1> /dev/null
+	FILE=/opt/sherlock
+	if [ -f "$FILE" ]
+	then
+		echo $grn"sherlock appears to be installed already.  moving along..."$white
+	else
+		echo $grn"Installing sherlock..."$white
+		cd /opt
+		git clone https://github.com/sherlock-project/sherlock.git >/dev/null 2>&1
+		cd sherlock
+		pip3 install -r requirements.txt 1> /dev/null
+	fi
 	}
 	
 	
 
 install_threader3000() {
-	echo $grn"Installing threader3000..."$white
-	pip3 install threader3000 1> /dev/null
+	if ! [ -x "$(command -v threader3000)" ]
+	then
+		echo $grn"Installing threader3000..."$white
+		pip3 install threader3000 1> /dev/null
+	else
+		echo $grn"threader3000 appears to be installed already.  moving along..."$white
+	fi
 	}
 	
 
 install_locate() {
-	echo $grn"Installing locate..."$white
-	apt install locate -y >/dev/null 2>&1
-	updatedb 1> /dev/null
+	if ! [ -x "$(command -v locate)" ]
+	then
+		echo $grn"Installing locate..."$white
+		apt install locate -y >/dev/null 2>&1
+		updatedb 1> /dev/null
+	else
+		echo $grn"locate appears to be installed already.  moving along..."$white
+	fi
 	}
 	
 
 install_seclists() {
-	echo $grn"Installing SecLists..."$white
-	apt install seclists -y >/dev/null 2>&1
-	cat /usr/share/seclists/Discovery/DNS/dns-Jhaddix.txt | head -n -14 > /tmp/clean-jhaddix-dns.txt
-	mv /tmp/clean-jhaddix-dns.txt /usr/share/seclists/Discovery/DNS/clean-jhaddix-dns.txt
+	if ! [ -x "$(command -v seclists)" ]
+	then
+		echo $grn"Installing SecLists..."$white
+		apt install seclists -y >/dev/null 2>&1
+		cat /usr/share/seclists/Discovery/DNS/dns-Jhaddix.txt | head -n -14 > /tmp/clean-jhaddix-dns.txt
+		mv /tmp/clean-jhaddix-dns.txt /usr/share/seclists/Discovery/DNS/clean-jhaddix-dns.txt
+	else
+		cat /usr/share/seclists/Discovery/DNS/dns-Jhaddix.txt | head -n -14 > /tmp/clean-jhaddix-dns.txt
+		mv /tmp/clean-jhaddix-dns.txt /usr/share/seclists/Discovery/DNS/clean-jhaddix-dns.txt
+		echo $grn"SecLists appears to be installed already.  moving along..."$white
+	fi
 	}
 	
 	
 install_dnsdumpster() {
-	echo $grn"Installing DNSDumpster..."$white
-	cd /opt
-	git clone https://github.com/wangoloj/dnsdumpster.git >/dev/null 2>&1
-	cd dnsdumpster
-	pip3 install -r requirements.txt 1> /dev/null
+	FILE=/opt/dnsdumpster
+	if [ -f "$FILE" ]
+	then
+		echo $grn"dnsdumpster appears to be installed already.  moving along..."$white
+	else
+		echo $grn"Installing DNSDumpster..."$white
+		cd /opt
+		git clone https://github.com/wangoloj/dnsdumpster.git >/dev/null 2>&1
+		cd dnsdumpster
+		pip3 install -r requirements.txt 1> /dev/null
+	fi
 	}
 	
 	
 install_github_search() {
-	echo $grn"Installing Github_Search..."$white
-	cd /opt
-	git clone https://github.com/gwen001/github-search.git >/dev/null 2>&1
-	cd github-search
-	pip3 install -r requirements3.txt 1> /dev/null
+	FILE=/opt/github-search
+	if [ -f "$FILE" ]
+	then
+		echo $grn"github-search appears to be installed already.  moving along..."$white
+	else
+		echo $grn"Installing Github_Search..."$white
+		cd /opt
+		git clone https://github.com/gwen001/github-search.git >/dev/null 2>&1
+		cd github-search
+		pip3 install -r requirements3.txt 1> /dev/null
+	fi
 	}
 	
 	
 install_shodan_cli() {
-	echo $grn"Installing Shodan CLI..."$white
-	pip3 install shodan 1> /dev/null
+	if ! [ -x "$(command -v shodan)" ]
+	then
+		echo $grn"Installing Shodan CLI..."$white
+		pip3 install shodan 1> /dev/null
+	else
+		echo $grn"shodan appears to be installed already.  moving along..."$white
+	fi
 	}
 	
 	
 	
 install_interlace() {
-	echo $grn"Installing Interlace..."$white
-	cd /opt/
-	git clone https://github.com/codingo/Interlace.git >/dev/null 2>&1
-	cd Interlace
-	python3 setup.py install 1> /dev/null
+	FILE=/opt/Interlace
+	if [ -f "$FILE" ]
+	then
+		echo $grn"Interlace appears to be installed already.  moving along..."$white
+	else
+		echo $grn"Installing Interlace..."$white
+		cd /opt/
+		git clone https://github.com/codingo/Interlace.git >/dev/null 2>&1
+		cd Interlace
+		python3 setup.py install 1> /dev/null
+	fi
 	}
 	
 	
 install_certspotter() {
-	echo $grn"Installing Certspotter..."$white
-	cd /opt
-	git clone https://github.com/SSLMate/certspotter.git >/dev/null 2>&1
-	go get software.sslmate.com/src/certspotter/cmd/certspotter 1> /dev/null
-	mv ~/go/bin/certspotter /opt/certspotter/certspotter 1> /dev/null
-	ln -s /opt/certspotter/certspotter /usr/bin/certspotter 1> /dev/null
+	if ! [ -x "$(command -v certspotter)" ]
+	then
+		echo $grn"Installing Certspotter..."$white
+		cd /opt
+		git clone https://github.com/SSLMate/certspotter.git >/dev/null 2>&1
+		go get software.sslmate.com/src/certspotter/cmd/certspotter 1> /dev/null
+		mv ~/go/bin/certspotter /opt/certspotter/certspotter 1> /dev/null
+		ln -s /opt/certspotter/certspotter /usr/bin/certspotter 1> /dev/null
+	else
+		echo $grn"certspotter appears to be installed already.  moving along..."$white
+	fi
 	}
 	
 	
 	
 install_cloudbrute() {
-	echo $grn"Installing CloudBrute..."$white
-	cd /opt
-	git clone https://github.com/jhaddix/CloudBrute.git >/dev/null 2>&1
-	cd CloudBrute
-	go build -o CloudBrute main.go >/dev/null 2>&1
-	ln -s /opt/CloudBrute/CloudBrute /usr/bin/CloudBrute 1> /dev/null
+	if ! [ -x "$(command -v )" ]
+	then
+		echo $grn"Installing CloudBrute..."$white
+		cd /opt
+		git clone https://github.com/jhaddix/CloudBrute.git >/dev/null 2>&1
+		cd CloudBrute
+		go build -o CloudBrute main.go >/dev/null 2>&1
+		ln -s /opt/CloudBrute/CloudBrute /usr/bin/CloudBrute 1> /dev/null
+	else
+		echo $grn"CloudBrute appears to be installed already.  moving along..."$white
+	fi
 	}
 	
 	
 	
 install_gau() {
-	echo $grn"Installing gau..."$white
-	cd /opt
-	git clone https://github.com/lc/gau.git >/dev/null 2>&1
-	cd gau
-	go build -o gau >/dev/null 2>&1
-	ln -s /opt/gau/gau /usr/bin/gau 1> /dev/null
+	if ! [ -x "$(command -v gau)" ]
+	then
+		echo $grn"Installing gau..."$white
+		cd /opt
+		git clone https://github.com/lc/gau.git >/dev/null 2>&1
+		cd gau
+		go build -o gau >/dev/null 2>&1
+		ln -s /opt/gau/gau /usr/bin/gau 1> /dev/null
+	else
+		echo $grn"gau appears to be installed already.  moving along..."$white
+	fi
 	}
-	
-	
-	
-install_masscan() {
-	echo $grn"Removing preinstalled masscan and installing masscan from source..."$white
-	apt purge masscan -y >/dev/null 2>&1
-	cd /opt
-	apt-get install git gcc make libpcap-dev -y >/dev/null 2>&1
-	git clone https://github.com/robertdavidgraham/masscan.git >/dev/null 2>&1
-	cd masscan
-	make 1> /dev/null
-	ln -s /opt/masscan/bin/masscan /usr/bin/masscan 1> /dev/null
-	}
+
 	
 
 install_massdns() {
-	echo $grn"Installing massdns..."$white
-	cd /opt
-	git clone https://github.com/blechschmidt/massdns.git >/dev/null 2>&1
-	cd massdns
-	make 1> /dev/null
-	ln -s /opt/massdns/bin/massdns /usr/bin/massdns 1> /dev/null
+	if ! [ -x "$(command -v massdns)" ]
+	then
+		echo $grn"Installing massdns..."$white
+		cd /opt
+		git clone https://github.com/blechschmidt/massdns.git >/dev/null 2>&1
+		cd massdns
+		make 1> /dev/null
+		ln -s /opt/massdns/bin/massdns /usr/bin/massdns 1> /dev/null
+	else
+		echo $grn"massdns appears to be installed already.  moving along..."$white
+	fi
 	}
 
 
 
 install_autorecon() {
-	echo $grn"Installing autorecon..."$white
-	cd /opt
-	git clone https://github.com/Tib3rius/AutoRecon.git >/dev/null 2>&1
-	cd AutoRecon
-	apt install seclists curl enum4linux gobuster nbtscan nikto nmap onesixtyone oscanner smbclient smbmap smtp-user-enum snmp sslscan sipvicious tnscmd10g whatweb wkhtmltopdf -y >/dev/null 2>&1
-	python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git >/dev/null 2>&1	
-	mv ~/.local/bin/autorecon /usr/bin/autorecon >/dev/null 2>&1	
+	if ! [ -x "$(command -v autorecon)" ]
+	then
+		echo $grn"Installing autorecon..."$white
+		cd /opt
+		git clone https://github.com/Tib3rius/AutoRecon.git >/dev/null 2>&1
+		cd AutoRecon
+		apt install seclists curl enum4linux gobuster nbtscan nikto nmap onesixtyone oscanner smbclient smbmap smtp-user-enum snmp sslscan sipvicious tnscmd10g whatweb wkhtmltopdf -y >/dev/null 2>&1
+		python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git >/dev/null 2>&1	
+		mv ~/.local/bin/autorecon /usr/bin/autorecon >/dev/null 2>&1
+	else
+		echo $grn"autorecon appears to be installed already.  moving along..."$white
+	fi
 	}
 
 
 
 install_hetty() {
-	echo $grn"Installing hetty..."$white
-	cd /opt
-	git clone https://github.com/dstotijn/hetty.git >/dev/null 2>&1
-	cd hetty
-	hetty=$(wget -qO- https://github.com/dstotijn/hetty/releases | grep "Linux_x86" | awk -F "href=" '{print $2}' | awk -F "rel=" '{print $1}' | head -n 1 | sed 's/"//g' | sed 's/^/https:\/\/github.com/') 1> /dev/null
-	wget $hetty -O /tmp/hetty >/dev/null 2>&1
-	tar xvfz /tmp/hetty* -C /opt/hetty 1> /dev/null
-	cd /opt/hetty/
-	rm -rf /tmp/hetty 1> /dev/null
-	ln -s /opt/hetty/hetty /usr/bin/hetty 1> /dev/null	
-	
+	if ! [ -x "$(command -v hetty)" ]
+	then
+		echo $grn"Installing hetty..."$white
+		cd /opt
+		git clone https://github.com/dstotijn/hetty.git >/dev/null 2>&1
+		cd hetty
+		hetty=$(wget -qO- https://github.com/dstotijn/hetty/releases | grep "Linux_x86" | awk -F "href=" '{print $2}' | awk -F "rel=" '{print $1}' | head -n 1 | sed 's/"//g' | sed 's/^/https:\/\/github.com/') 1> /dev/null
+		wget $hetty -O /tmp/hetty >/dev/null 2>&1
+		tar xvfz /tmp/hetty* -C /opt/hetty 1> /dev/null
+		cd /opt/hetty/
+		rm -rf /tmp/hetty 1> /dev/null
+		ln -s /opt/hetty/hetty /usr/bin/hetty 1> /dev/null
+	else
+		echo $grn"hetty appears to be installed already.  moving along..."$white
+	fi
 	}
 
 
 install_atom() {
-	echo $grn"Installing Atom..."$white
-	sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'  1> /dev/null
-	wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | apt-key add - 
-	apt update >/dev/null 2>&1
-	apt install atom -y >/dev/null 2>&1
+	if ! [ -x "$(command -v atom)" ]
+	then
+		echo $grn"Installing Atom..."$white
+		sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'  1> /dev/null
+		wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | apt-key add - 
+		apt update >/dev/null 2>&1
+		apt install atom -y >/dev/null 2>&1
+	else
+		echo $grn"atom appears to be installed already.  moving along..."$white
+	fi
 	}
-	
-	
 
 
 
 fix_sources
-install_go_and_python
+install_go
+install_pip
+install_pip3
 install_terminator
 pimpmykali
 install_ffuf
@@ -616,7 +762,8 @@ install_gtfoblookup
 install_navi
 install_tomnomnom_stuff
 install_nahamsec_stuff
-install_Bloodhound
+install_neo4j
+install_bloodhound
 install_sublist3r
 installing_asnlookup
 install_evil_winrm
@@ -655,7 +802,7 @@ echo "            Holy crap!!!  It's over!  FREEEEEEDOOOOOMMMMEEE!"
 echo "                   Now go forth and always remember..."
 echo $red" _                _      _   _                  _                  _   "
 echo "| |__   __ _  ___| | __ | |_| |__   ___   _ __ | | __ _ _ __   ___| |_ "
-echo "| '_ \ / _\` |/ __| |/ / | __| '_ \ / _ \ | '_ \| |/ _\` | '_ \ / _ \ __|"
+echo -e "| '_ \ / _\` |/ __| |/ / | __| '_ \ / _ \ | '_ \| |/ _\` | '_ \ / _ \ __|"
 echo "| | | | (_| | (__|   <  | |_| | | |  __/ | |_) | | (_| | | | |  __/ |_ "
 echo "|_| |_|\__,_|\___|_|\_\  \__|_| |_|\___| | .__/|_|\__,_|_| |_|\___|\__|"
 echo "                                         |_|     "$white
