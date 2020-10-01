@@ -693,7 +693,7 @@ install_certspotter() {
 	
 	
 install_cloudbrute() {
-	if ! [ -x "$(command -v )" ]
+	if ! [ -x "$(command -v CloudBrute)" ]
 	then
 		echo $grn"Installing CloudBrute..."$white
 		cd /opt
