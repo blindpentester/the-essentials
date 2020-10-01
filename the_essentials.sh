@@ -780,11 +780,10 @@ install_atom() {
 	if ! [ -x "$(command -v atom)" ]
 	then
 		echo $grn"Installing Atom..."$white
-		apt install atom -y
-		#sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'  1> /dev/null
-		#wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | apt-key add - 
-		#apt update >/dev/null 2>&1
-		#apt install atom -y >/dev/null 2>&1
+		sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'  1> /dev/null
+		wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | apt-key add - 
+		apt update >/dev/null 2>&1
+		apt install atom -y >/dev/null 2>&1
 	else
 		echo $grn"atom appears to be installed already.  moving along..."$white
 	fi
