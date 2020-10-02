@@ -13,10 +13,15 @@ mag=$'\e[1;35m'
 cyn=$'\e[1;36m'
 white=$'\e[0m'
 
+skip=0    # Add skip=0 up here by colors 
+
 if [ "$EUID" -ne 0 ]
 	then echo -e $grn"\n\n Script must be run with sudo ./the_essentials.sh or as root \n"$grn
        exit
 fi
+
+
+
 
 fix_sources() {
 	echo $grn"Fixing sources..."$white
@@ -24,6 +29,9 @@ fix_sources() {
 	echo "deb-src http://http.kali.org/kali kali-rolling main non-free contrib" >> /etc/apt/sources.list
 	apt update >/dev/null 2>&1
 	}
+
+
+
 
 install_go() {
 	if ! [ -x "$(command -v go)" ]
@@ -49,8 +57,6 @@ install_pip() {
 
         }
 
-	
-	
 
 install_pip3() {
 	if ! [ -x "$(command -v pip3)" ]
@@ -75,25 +81,37 @@ install_terminator() {
 	}
 
 
+
+
+
+
 pimpmykali() {
-	FILE=/opt/pimpmykali/pimpmykali.sh
-	if [ -f "$FILE" ]
-	then
-		echo $grn"pimpmykali already exists.  Skipping to next item."$white
-	else
-		echo "***************************************"
-		echo "*                                     *"
-		echo "*   Script made by Dewalt and will    *"
-		echo "*  require some user input. Stand by  *"
-		echo "*                                     *"
-		echo "***************************************"
-		sleep 5
-		cd /opt/
-		git clone https://github.com/Dewalt-arch/pimpmykali.git >/dev/null 2>&1
-		cd pimpmykali
-		./pimpmykali.sh --force
-	fi
-	}
+  if [ $skip = 0 ]  # this HAS to be $skip = 0 no -ne or anything fancy
+  then
+    FILE=/opt/pimpmykali/pimpmykali.sh
+      if [ -f "$FILE" ]
+      then
+        echo $grn"$FILE already exists.  Skipping to next item."$white
+        install_ffuf
+        else
+        echo "***************************************"
+        echo "*                                     *"
+        echo "*   Script made by Dewalt and will    *"
+        echo "*  require some user input. Stand by  *"
+        echo "*                                     *"
+        echo "***************************************"
+        sleep 5
+        cd /opt/
+        git clone https://github.com/Dewalt-arch/pimpmykali.git >/dev/null 2>&1
+        cd pimpmykali
+        sudo chmod +x pimpmykali.sh >/dev/null 2>&1
+        sudo ./pimpmykali.sh --force
+    fi
+        else 
+          echo "skipping pimpmykali.sh --skippimp was used" 
+    fi    
+  }
+
 
 
 install_ffuf() {
@@ -791,12 +809,25 @@ install_atom() {
 
 
 
+check_arg () {
+  if [ "$1" == "" ] 
+  then 
+    skip=0
+  else
+    case $1 in 
+    --skip) skip=1 ;; 
+    esac
+    fi
+  }
+
+
+check_arg "$1"
 fix_sources
 install_go
 install_pip
 install_pip3
 install_terminator
-pimpmykali
+pimpmykali $skip 
 install_ffuf
 install_p0wny_shell
 install_dirsearch
@@ -847,12 +878,14 @@ install_hetty
 install_atom
 
 
+  
+
 clear
-echo "            Holy crap!!!  It's over!  FREEEEEEDOOOOOMMMMEEE!"
-echo "                   Now go forth and always remember..."
+echo "Holy crap!!!  It's over!  FREEEEEEDOOOOOMMMMEEE!"
+echo "Now go forth and always remember..."
 echo $red" _                _      _   _                  _                  _   "
 echo "| |__   __ _  ___| | __ | |_| |__   ___   _ __ | | __ _ _ __   ___| |_ "
-echo -e "| '_ \ / _\` |/ __| |/ / | __| '_ \ / _ \ | '_ \| |/ _\` | '_ \ / _ \ __|"
+echo "| '_ \ / _\` |/ __| |/ / | __| '_ \ / _ \ | '_ \| |/ _\` | '_ \ / _ \ __|"
 echo "| | | | (_| | (__|   <  | |_| | | |  __/ | |_) | | (_| | | | |  __/ |_ "
 echo "|_| |_|\__,_|\___|_|\_\  \__|_| |_|\___| | .__/|_|\__,_|_| |_|\___|\__|"
 echo "                                         |_|     "$white
