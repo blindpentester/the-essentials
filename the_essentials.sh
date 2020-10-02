@@ -122,7 +122,7 @@ install_ffuf() {
 		git clone https://github.com/ffuf/ffuf.git >/dev/null 2>&1
 		cd ffuf
 		go build 1> /dev/null
-		ln -s /opt/ffuf/ffuf /usr/bin/ffuf 1> /dev/null
+		ln -sf /opt/ffuf/ffuf /usr/bin/ffuf 1> /dev/null
 	else
 		echo $grn"ffuf already exists, move along..."$white
 	fi
@@ -150,7 +150,7 @@ install_dirsearch() {
 		cd /opt/
 		git clone https://github.com/maurosoria/dirsearch.git >/dev/null 2>&1
 		cd dirsearch
-		ln -s /opt/dirsearch/dirsearch.py /usr/bin/dirsearch >/dev/null 2>&1
+		ln -sf /opt/dirsearch/dirsearch.py /usr/bin/dirsearch >/dev/null 2>&1
 	else
 		echo $grn"dirsearch appears to be installed already.  moving along..."$white
 	fi
@@ -181,7 +181,7 @@ install_aquatone() {
 		cd aquatone
 		go get github.com/michenriksen/aquatone 1> /dev/null
 		mv ~/go/bin/aquatone . 1> /dev/null
-		ln -s /opt/aquatone/aquatone /usr/bin/aquatone >/dev/null 2>&1
+		ln -sf /opt/aquatone/aquatone /usr/bin/aquatone >/dev/null 2>&1
 	else
 		echo $grn"aquatone appears to be installed already.  moving along..."$white
 	fi
@@ -265,7 +265,7 @@ install_tom_httprobe() {
 		git clone https://github.com/tomnomnom/httprobe.git >/dev/null 2>&1
 		cd httprobe
 		go build 1> /dev/null
-		ln -s /opt/httprobe/httprobe /usr/bin/httprobe >/dev/null 2>&1	
+		ln -sf /opt/httprobe/httprobe /usr/bin/httprobe >/dev/null 2>&1	
 	else
 		echo $grn"httprobe appears to be installed already.  moving along..."$white
 	fi
@@ -281,7 +281,7 @@ install_tom_waybackurls() {
 		git clone https://github.com/tomnomnom/waybackurls.git >/dev/null 2>&1
 		cd waybackurls
 		go build 1> /dev/null
-		ln -s /opt/waybackurls/waybackurls /usr/bin/waybackurls >/dev/null 2>&1
+		ln -sf /opt/waybackurls/waybackurls /usr/bin/waybackurls >/dev/null 2>&1
 	else 
 		echo $grn"waybackurls appears to be installed already.  moving along..."$white
 	fi
@@ -297,7 +297,7 @@ install_tom_unfurl() {
 		cd unfurl
 		go get -u github.com/tomnomnom/unfurl 1> /dev/null
 		mv /root/go/bin/unfurl /opt/unfurl/ 1> /dev/null
-		ln -s /opt/unfurl/unfurl /usr/bin/unfurl >/dev/null 2>&1
+		ln -sf /opt/unfurl/unfurl /usr/bin/unfurl >/dev/null 2>&1
 	else
 		echo $grn"unfurl appears to be installed already.  moving along..."$white
 	fi
@@ -313,7 +313,7 @@ install_tom_fff() {
 		git clone https://github.com/tomnomnom/fff.git >/dev/null 2>&1
 		cd fff
 		go build >/dev/null 2>&1
-		ln -s /opt/fff/fff /usr/bin/fff >/dev/null 2>&1
+		ln -sf /opt/fff/fff /usr/bin/fff >/dev/null 2>&1
 	else
 		echo $grn"fff appears to be installed already.  moving along..."$white
 	fi
@@ -340,7 +340,7 @@ install_nahamsec_stuff() {
 	# cd /opt
 	# git clone https://github.com/nahamsec/lazyrecon.git >/dev/null 2>&1
 	# cd lazyrecon
-	# ln -s /opt/lazyrecon/lazyrecon.sh /usr/share/lazyrecon 1> /dev/null
+	# ln -sf /opt/lazyrecon/lazyrecon.sh /usr/share/lazyrecon 1> /dev/null
 	
 	# Modifying lazyrecon to work with current downloaded/installed files from this script 
 	# sed -i 's/~\/tools/\/opt/g' lazyrecon.sh 1> /dev/null
@@ -702,7 +702,7 @@ install_certspotter() {
 		git clone https://github.com/SSLMate/certspotter.git >/dev/null 2>&1
 		go get software.sslmate.com/src/certspotter/cmd/certspotter 1> /dev/null
 		mv ~/go/bin/certspotter /opt/certspotter/certspotter 1> /dev/null
-		ln -s /opt/certspotter/certspotter /usr/bin/certspotter 1> /dev/null
+		ln -sf /opt/certspotter/certspotter /usr/bin/certspotter 1> /dev/null
 	else
 		echo $grn"certspotter appears to be installed already.  moving along..."$white
 	fi
@@ -718,7 +718,7 @@ install_cloudbrute() {
 		git clone https://github.com/jhaddix/CloudBrute.git >/dev/null 2>&1
 		cd CloudBrute
 		go build -o CloudBrute main.go >/dev/null 2>&1
-		ln -s /opt/CloudBrute/CloudBrute /usr/bin/CloudBrute 1> /dev/null
+		ln -sf /opt/CloudBrute/CloudBrute /usr/bin/CloudBrute 1> /dev/null
 	else
 		echo $grn"CloudBrute appears to be installed already.  moving along..."$white
 	fi
@@ -734,7 +734,7 @@ install_gau() {
 		git clone https://github.com/lc/gau.git >/dev/null 2>&1
 		cd gau
 		go build -o gau >/dev/null 2>&1
-		ln -s /opt/gau/gau /usr/bin/gau 1> /dev/null
+		ln -sf /opt/gau/gau /usr/bin/gau 1> /dev/null
 	else
 		echo $grn"gau appears to be installed already.  moving along..."$white
 	fi
@@ -750,7 +750,7 @@ install_massdns() {
 		git clone https://github.com/blechschmidt/massdns.git >/dev/null 2>&1
 		cd massdns
 		make 1> /dev/null
-		ln -s /opt/massdns/bin/massdns /usr/bin/massdns 1> /dev/null
+		ln -sf /opt/massdns/bin/massdns /usr/bin/massdns 1> /dev/null
 	else
 		echo $grn"massdns appears to be installed already.  moving along..."$white
 	fi
@@ -787,7 +787,7 @@ install_hetty() {
 		tar xvfz /tmp/hetty* -C /opt/hetty 1> /dev/null
 		cd /opt/hetty/
 		rm -rf /tmp/hetty 1> /dev/null
-		ln -s /opt/hetty/hetty /usr/bin/hetty 1> /dev/null
+		ln -sf /opt/hetty/hetty /usr/bin/hetty 1> /dev/null
 	else
 		echo $grn"hetty appears to be installed already.  moving along..."$white
 	fi
@@ -888,4 +888,4 @@ echo "| |__   __ _  ___| | __ | |_| |__   ___   _ __ | | __ _ _ __   ___| |_ "
 echo "| '_ \ / _\` |/ __| |/ / | __| '_ \ / _ \ | '_ \| |/ _\` | '_ \ / _ \ __|"
 echo "| | | | (_| | (__|   <  | |_| | | |  __/ | |_) | | (_| | | | |  __/ |_ "
 echo "|_| |_|\__,_|\___|_|\_\  \__|_| |_|\___| | .__/|_|\__,_|_| |_|\___|\__|"
-echo "                                         |_|     "$white
+echo "                                         |_| the-essentials: blindpentester"$white
