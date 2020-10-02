@@ -881,8 +881,8 @@ install_atom
   
 
 clear
-echo "          Holy crap!!!  It's over!  FREEEEEEDOOOOOMMMMEEE!"
-echo "                 Now go forth and always remember..."
+echo "            Holy crap!!!  It's over!  FREEEEEEDOOOOOMMMMEEE!"
+echo "                   Now go forth and always remember..."
 echo $red" _                _      _   _                  _                  _   "
 echo "| |__   __ _  ___| | __ | |_| |__   ___   _ __ | | __ _ _ __   ___| |_ "
 echo "| '_ \ / _\` |/ __| |/ / | __| '_ \ / _ \ | '_ \| |/ _\` | '_ \ / _ \ __|"
