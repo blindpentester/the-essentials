@@ -4,7 +4,8 @@ A script that I made to get the essential tools I use for various reasons on Kal
     cd /opt  
     sudo git clone https://github.com/blindpentester/the-essentials.git  
     cd the-essentials  
-    sudo ./the_essentials.sh  
+    sudo ./the_essentials.sh (add --skip to bypass pimpmykali)  
+    
   
 ### Various Fixes:  
 Fixing sources in /etc/apt/sources.list  
@@ -61,6 +62,7 @@ python3-pip
   
 ## v0.02
 * Checks for installs and will move to the next if it sees file/folder exists already.  This way it will only add the items that you currently don't have or will skip and continue through.
+    * --skip option added to bypass pimpmykali and continue with installing tools
   
   
 ## v0.01  
