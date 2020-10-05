@@ -16,6 +16,8 @@ python3-pip
 ### Installing the following items:  
   
 * golang  
+* python-pip, python3-pip  
+* terminator  
 * "pimpmykali" from https://github.com/Dewalt-arch/pimpmykali  
 * ffuf  
 * p0wny-shell  
@@ -23,6 +25,8 @@ python3-pip
 * privilege-escalation-awesome-scripts-suite  
 * aquatone  
 * Reverse Shell Generator  
+* nmap vulners  
+* gtfoblookup  
 * navi  
 * httprobe  
 * waybackurls  
