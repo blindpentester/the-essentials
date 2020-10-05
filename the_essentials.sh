@@ -808,6 +808,18 @@ install_atom() {
 	}
 
 
+install_ciphey() {
+	if ! [ -x "$(command -v ciphey)" ]
+	then
+		echo $grn"Installing ciphey..."$white
+		pip3 install ciphey >/dev/null 2>&1
+	else
+		echo $grn"ciphey appears to be installed already.  moving along..."$white
+	fi
+	
+	}
+
+
 
 check_arg () {
   if [ "$1" == "" ] 
@@ -819,6 +831,7 @@ check_arg () {
     esac
     fi
   }
+  
 
 
 check_arg "$1"
@@ -876,6 +889,7 @@ install_massdns
 install_autorecon
 install_hetty
 install_atom
+install_ciphey
 
 
   
