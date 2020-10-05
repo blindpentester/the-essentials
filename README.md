@@ -16,7 +16,8 @@ python3-pip
 ### Installing the following items:  
   
 * golang  
-* python-pip, python3-pip  
+* python-pip  
+* python3-pip  
 * terminator  
 * "pimpmykali" from https://github.com/Dewalt-arch/pimpmykali  
 * ffuf  
