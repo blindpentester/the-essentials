@@ -890,6 +890,7 @@ install_autorecon
 install_hetty
 install_atom
 install_ciphey
+sleep 2
 
 
   
