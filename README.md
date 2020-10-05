@@ -58,7 +58,8 @@ python3-pip
 * massdns  
 * AutoRecon  
 * hetty  
-* Atom  
+* Atom 
+* ciphey  
   
 ## v0.02
 * Checks for installs and will move to the next if it sees file/folder exists already.  This way it will only add the items that you currently don't have or will skip and continue through.
