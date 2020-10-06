@@ -178,7 +178,7 @@ install_linenum() {
 	else
 		cd /opt
 		git clone https://github.com/rebootuser/LinEnum.git
-		
+	fi	
 	}
 
 
