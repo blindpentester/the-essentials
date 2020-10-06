@@ -24,6 +24,7 @@ python3-pip
 * p0wny-shell  
 * dirsearch  
 * privilege-escalation-awesome-scripts-suite  
+* LinEnum  
 * aquatone  
 * Reverse Shell Generator  
 * nmap vulners  
