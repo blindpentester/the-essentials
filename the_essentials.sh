@@ -169,6 +169,17 @@ install_PEAS() {
 		git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git >/dev/null 2>&1
 	fi
 	}
+	
+install_linenum() {
+	FOLDER=/opt/LinEnum
+	if [ -d "$FOLDER" ]
+	then
+		echo $grn"LinEnum already exists.  Skipping to next item..."$white
+	else
+		cd /opt
+		git clone https://github.com/rebootuser/LinEnum.git
+		
+	}
 
 
 
@@ -845,6 +856,7 @@ install_ffuf
 install_p0wny_shell
 install_dirsearch
 install_PEAS
+install_linenum
 install_aquatone
 install_rsg
 install_nmap_vulners
