@@ -177,7 +177,7 @@ install_linenum() {
 		echo $grn"LinEnum already exists.  Skipping to next item..."$white
 	else
 		cd /opt
-		git clone https://github.com/rebootuser/LinEnum.git
+		git clone https://github.com/rebootuser/LinEnum.git >/dev/null 2>&1
 	fi	
 	}
 
