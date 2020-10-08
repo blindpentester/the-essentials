@@ -847,6 +847,7 @@ install_gospider() {
 install_instashell() {
 	FOLDER=/opt/instashell
 	if [ -d "$FOLDER" ]
+	then
 		echo $grn"instashell appears to be installed already.  moving along..."$white
 	else
 		echo $grn"Installing instashell..."$white
