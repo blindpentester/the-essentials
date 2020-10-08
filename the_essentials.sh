@@ -844,6 +844,17 @@ install_gospider() {
 	fi
 }
 
+install_instashell() {
+	FOLDER=/opt/instashell
+	if [ -d "$FOLDER" ]
+		echo $grn"instashell appears to be installed already.  moving along..."$white
+	else
+		echo $grn"Installing instashell..."$white
+		cd /opt
+		git clone https://github.com/NathanLundner/instashell >/dev/null 2>&1
+fi
+)
+
 
 
 check_arg () {
@@ -917,6 +928,7 @@ install_hetty
 install_atom
 install_ciphey
 install_gospider
+install_instashell
 sleep 2
 
 
