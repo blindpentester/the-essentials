@@ -829,6 +829,20 @@ install_ciphey() {
 	fi
 	
 	}
+	
+install_gospider() {
+	if ! [ -x "$(command -v gospider)" ]
+	then
+		echo $grn"Installing gospider..."$white
+		cd /opt
+		git clone https://github.com/jaeles-project/gospider
+		cd gospider
+		go build
+		ln -sf /opt/gospider/gospider /user/bin/gospider
+	else
+		echo $grn"gospider appears to be installed already.  moving along..."$white
+	fi
+}
 
 
 
@@ -902,6 +916,7 @@ install_autorecon
 install_hetty
 install_atom
 install_ciphey
+install_gospider
 sleep 2
 
 
