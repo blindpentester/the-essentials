@@ -835,10 +835,10 @@ install_gospider() {
 	then
 		echo $grn"Installing gospider..."$white
 		cd /opt
-		git clone https://github.com/jaeles-project/gospider
+		git clone https://github.com/jaeles-project/gospider >/dev/null 2>&1
 		cd gospider
-		go build
-		ln -sf /opt/gospider/gospider /user/bin/gospider
+		go build >/dev/null 2>&1
+		ln -sf /opt/gospider/gospider /user/bin/gospider >/dev/null 2>&1
 	else
 		echo $grn"gospider appears to be installed already.  moving along..."$white
 	fi
