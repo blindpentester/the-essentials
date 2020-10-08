@@ -854,7 +854,7 @@ install_instashell() {
 		cd /opt
 		git clone https://github.com/NathanLundner/instashell >/dev/null 2>&1
 fi
-)
+}
 
 
 
