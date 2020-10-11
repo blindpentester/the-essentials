@@ -857,6 +857,18 @@ fi
 }
 
 
+install_wesng(){
+FOLDER=/opt/wesng
+if [ -d "$FOLDER" ]
+then
+	echo $grn"wesng appears to be installed already.  moving along..."$white
+else
+	echo $grn"Installing wesng..."$white
+	cd /opt
+	git clone https://github.com/bitsadmin/wesng
+	fi
+}
+
 
 check_arg () {
   if [ "$1" == "" ] 
@@ -930,6 +942,7 @@ install_atom
 install_ciphey
 install_gospider
 install_instashell
+install_wesng
 sleep 2
 
 
