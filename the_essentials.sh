@@ -838,7 +838,7 @@ install_gospider() {
 		git clone https://github.com/jaeles-project/gospider >/dev/null 2>&1
 		cd gospider
 		go build >/dev/null 2>&1
-		ln -sf /opt/gospider/gospider /user/bin/gospider >/dev/null 2>&1
+		cp gospider /usr/bin/
 	else
 		echo $grn"gospider appears to be installed already.  moving along..."$white
 	fi
