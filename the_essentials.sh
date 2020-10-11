@@ -980,15 +980,14 @@ install_wesng
 sleep 2
 
 clear
-hackthe=$(base64 -d <<< "H4sIAAAAAAAAA42RQRKAMAgD77yifCOn/v9VQgqFVg9WBzcBojPK+Doy5xyDxeuCoGyE+eWGNeVt
-XfQ3RreVpLEX3iX7pJEolXLvIJ7wDnlNigEvWkGVYHqWyqy+owr7DFUnX+2U76W1f0LwMWkpFoJo
-FqGFoKk10ic9AVTg3kE85ZW8JgXuwWsRa1J6KwK77r4BZFBE3QTe6bWYerC/5iAPqtoU7sQCAAA=" | gunzip )
+hackthe=$(base64 -d <<< "H4sIAAAAAAAAA21M0RUAIQj6b4pYgy/2n+pKKat3lQYIttbHkVQtfgMdox/NgrwESzVAxjwqBjz2
+zCNvgVlOSJusfNkB5ooBZkMBwqmpbJLzyx75ziiegPGskF7Ay54etg/NTlOxTgEAAA==" | gunzip )
 
-signature=$(base64 -d <<< "H4sIAAAAAAAAA+NSwAQlGakKqcXFqXklmYk5xVYKSTmZeSkFQG5qcUlqERcAZSBxOjMAAAA=" | gunzip )
+signature=$(base64 -d <<< "H4sIAAAAAAAAA+NSwApKMlIVUouLU/NKMhNziq0UknIy81IKgNzU4pLUIi7smnACLgCGungsZgAA
+AA==" | gunzip )
 
-planet=$(base64 -d <<< "H4sIAAAAAAAAA5WOSxKAIAxD95yiuUZXvf+ppOkHUGccqzKPhBCHcCwmSGQXS6slxYRx5G3Pn2e/
-8ugGyIs2n9MlZxo8CUt6ah7H7pKrGxb2pO6GZcavQBKgKL+7/XoEdXeI1Rjko+13WuWVMnPQ8jOt
-S20k8D9vtA5WeoV1vr6lpLluS7jkCneWPvfx1TW11S7SMUd+z7gATOZhtKQCAAA=" | gunzip )
+planet=$(base64 -d <<< "H4sIAAAAAAAAA7VLuRHAMAjrmQItkAGovP9U4fXJSdrAHRJ6VGdWTRJWWoizJtMoSm1MBi/Bl5ww
+Ae4iMymPkFtOEcDw0XX5JImefpAdoq7aRrPLAurxt+2k9amJcPnXkRuVRIOPmAEAAA==" | gunzip )
 
 echo -e "$red$hackthe$white"
 echo -e "$grn$signature$white"
