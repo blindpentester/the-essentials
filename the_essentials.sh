@@ -3,7 +3,7 @@
 # Simple script to reach out and get some toys for Kali Linux 2020.X to help collect recon/bug bounty/fuzzing tools
 #
 #
-# Usage: 
+# Usage:
 # ./the_essentials.sh
 
 red=$'\e[1;31m'
@@ -13,7 +13,7 @@ mag=$'\e[1;35m'
 cyn=$'\e[1;36m'
 white=$'\e[0m'
 
-skip=0    # Add skip=0 up here by colors 
+skip=0    # Add skip=0 up here by colors
 
 if [ "$EUID" -ne 0 ]
 	then echo -e $grn"\n\n Script must be run with sudo ./the_essentials.sh or as root \n"$grn
@@ -30,6 +30,24 @@ fix_sources() {
 	apt update >/dev/null 2>&1
 	}
 
+
+install_docker() {
+if ! [ -x "$(command -v docker)" ]
+then
+	echo $grn"Installing docker..."$white
+	curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - >/dev/null 2>&1
+	echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null 2>&1
+	sudo apt-get update >/dev/null 2>&1
+	apt-get install docker-ce -y >/dev/null 2>&1
+
+else
+	echo $grn"docker appears to be installed already.  moving along..."$white
+	apt-get remove docker docker-engine docker.io >/dev/null 2>&1
+	apt-get install docker-ce -y >/dev/null 2>&1
+
+	fi
+
+	}
 
 
 
@@ -66,7 +84,7 @@ install_pip3() {
 	else
 		echo $grn"pip3 already installed, move along..."$white
 	fi
-	
+
 	}
 
 
@@ -107,9 +125,9 @@ pimpmykali() {
         sudo chmod +x pimpmykali.sh >/dev/null 2>&1
         sudo ./pimpmykali.sh --force
     fi
-        else 
-          echo "skipping pimpmykali.sh --skippimp was used" 
-    fi    
+        else
+          echo "skipping pimpmykali.sh --skippimp was used"
+    fi
   }
 
 
@@ -132,7 +150,7 @@ install_ffuf() {
 
 install_p0wny_shell() {
 	FILE=/opt/p0wny-shell/README.md
-	if [ -f "$FILE" ] 
+	if [ -f "$FILE" ]
 	then
 		echo $grn"p0wny-shell exists already, moving on to next item..."$white
 	else
@@ -169,7 +187,7 @@ install_PEAS() {
 		git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git >/dev/null 2>&1
 	fi
 	}
-	
+
 install_linenum() {
 	FOLDER=/opt/LinEnum
 	if [ -d "$FOLDER" ]
@@ -178,7 +196,7 @@ install_linenum() {
 	else
 		cd /opt
 		git clone https://github.com/rebootuser/LinEnum.git >/dev/null 2>&1
-	fi	
+	fi
 	}
 
 
@@ -276,11 +294,11 @@ install_tom_httprobe() {
 		git clone https://github.com/tomnomnom/httprobe.git >/dev/null 2>&1
 		cd httprobe
 		go build 1> /dev/null
-		ln -sf /opt/httprobe/httprobe /usr/bin/httprobe >/dev/null 2>&1	
+		ln -sf /opt/httprobe/httprobe /usr/bin/httprobe >/dev/null 2>&1
 	else
 		echo $grn"httprobe appears to be installed already.  moving along..."$white
 	fi
-	
+
 	}
 
 
@@ -293,7 +311,7 @@ install_tom_waybackurls() {
 		cd waybackurls
 		go build 1> /dev/null
 		ln -sf /opt/waybackurls/waybackurls /usr/bin/waybackurls >/dev/null 2>&1
-	else 
+	else
 		echo $grn"waybackurls appears to be installed already.  moving along..."$white
 	fi
 	}
@@ -313,8 +331,8 @@ install_tom_unfurl() {
 		echo $grn"unfurl appears to be installed already.  moving along..."$white
 	fi
 	}
-	
-	
+
+
 
 install_tom_fff() {
 	if ! [ -x "$(command -v fff)" ]
@@ -330,7 +348,7 @@ install_tom_fff() {
 	fi
 
 	}
-	
+
 
 
 install_tom_hacks() {
@@ -352,8 +370,8 @@ install_nahamsec_stuff() {
 	# git clone https://github.com/nahamsec/lazyrecon.git >/dev/null 2>&1
 	# cd lazyrecon
 	# ln -sf /opt/lazyrecon/lazyrecon.sh /usr/share/lazyrecon 1> /dev/null
-	
-	# Modifying lazyrecon to work with current downloaded/installed files from this script 
+
+	# Modifying lazyrecon to work with current downloaded/installed files from this script
 	# sed -i 's/~\/tools/\/opt/g' lazyrecon.sh 1> /dev/null
 	# sed -i 's/python \/opt\/Sublist3r\/sublist3r.py/sublist3r/g' lazyrecon.sh 1> /dev/null
 	# sed -i 's/\/opt\/SecLists/\/usr\/share\/seclists/g' lazyrecon.sh 1> /dev/null
@@ -387,7 +405,7 @@ install_bloodhound() {
 	else
 		echo $grn"bloodhound appears to be installed already.  moving along..."$white
 	fi
-	
+
 	}
 
 
@@ -414,7 +432,7 @@ installing_asnlookup() {
 		git clone https://github.com/yassineaboukir/asnlookup.git >/dev/null 2>&1
 		cd asnlookup
 		pip3 install -r requirements.txt 1> /dev/null
-	fi	
+	fi
 	}
 
 
@@ -453,20 +471,20 @@ install_more_wordlists() {
 		git clone https://github.com/ZephrFish/Wordlists.git >/dev/null 2>&1
 	fi
 	}
-	
-	
+
+
 install_gobuster() {
 	if ! [ -x "$(command -v gobuster)" ]
 	then
 		echo $grn"Installing GoBuster..."$white
-		apt install gobuster -y >/dev/null 2>&1	
-	else	
+		apt install gobuster -y >/dev/null 2>&1
+	else
 		echo $grn"gobuster appears to be installed already.  moving along..."$white
 
 	fi
 	}
-	
-	
+
+
 install_recursivegobuster() {
 	FOLDER=/opt/recursive-gobuster
 	if [ -d "$FOLDER" ]
@@ -518,7 +536,7 @@ install_stegoVeritas() {
 		echo $grn"stegoVeritas appears to be installed already.  moving along..."$white
 	fi
 	}
-	
+
 
 install_crackmapexec() {
 	if ! [ -x "$(command -v crackmapexec)" ]
@@ -538,7 +556,7 @@ snag_random_repos() {
 	git clone https://github.com/sleventyeleven/linuxprivchecker.git >/dev/null 2>&1
 	git clone https://github.com/jhaddix/tbhm.git >/dev/null 2>&1
 	}
-	
+
 
 install_dnstwist() {
 	if ! [ -x "$(command -v dnstwist)" ]
@@ -549,7 +567,7 @@ install_dnstwist() {
 		echo $grn"dnstwist appears to be installed already.  moving along..."$white
 	fi
 	}
-	
+
 install_spoofcheck() {
 	FOLDER=/opt/spoofcheck
 	if [ -d "$FOLDER" ]
@@ -607,8 +625,8 @@ install_sherlock(){
 		pip3 install -r requirements.txt 1> /dev/null
 	fi
 	}
-	
-	
+
+
 
 install_threader3000() {
 	if ! [ -x "$(command -v threader3000)" ]
@@ -619,7 +637,7 @@ install_threader3000() {
 		echo $grn"threader3000 appears to be installed already.  moving along..."$white
 	fi
 	}
-	
+
 
 install_locate() {
 	if ! [ -x "$(command -v locate)" ]
@@ -631,7 +649,7 @@ install_locate() {
 		echo $grn"locate appears to be installed already.  moving along..."$white
 	fi
 	}
-	
+
 
 install_seclists() {
 	if ! [ -x "$(command -v seclists)" ]
@@ -646,8 +664,8 @@ install_seclists() {
 		echo $grn"SecLists appears to be installed already.  moving along..."$white
 	fi
 	}
-	
-	
+
+
 install_dnsdumpster() {
 	FOLDER=/opt/dnsdumpster
 	if [ -d "$FOLDER" ]
@@ -661,8 +679,8 @@ install_dnsdumpster() {
 		pip3 install -r requirements.txt 1> /dev/null
 	fi
 	}
-	
-	
+
+
 install_github_search() {
 	FOLDER=/opt/github-search
 	if [ -d "$FOLDER" ]
@@ -676,8 +694,8 @@ install_github_search() {
 		pip3 install -r requirements3.txt 1> /dev/null
 	fi
 	}
-	
-	
+
+
 install_shodan_cli() {
 	if ! [ -x "$(command -v shodan)" ]
 	then
@@ -687,9 +705,9 @@ install_shodan_cli() {
 		echo $grn"shodan appears to be installed already.  moving along..."$white
 	fi
 	}
-	
-	
-	
+
+
+
 install_interlace() {
 	FOLDER=/opt/Interlace
 	if [ -d "$FOLDER" ]
@@ -703,8 +721,8 @@ install_interlace() {
 		python3 setup.py install 1> /dev/null
 	fi
 	}
-	
-	
+
+
 install_certspotter() {
 	if ! [ -x "$(command -v certspotter)" ]
 	then
@@ -718,9 +736,9 @@ install_certspotter() {
 		echo $grn"certspotter appears to be installed already.  moving along..."$white
 	fi
 	}
-	
-	
-	
+
+
+
 install_cloudbrute() {
 	if ! [ -x "$(command -v CloudBrute)" ]
 	then
@@ -734,9 +752,9 @@ install_cloudbrute() {
 		echo $grn"CloudBrute appears to be installed already.  moving along..."$white
 	fi
 	}
-	
-	
-	
+
+
+
 install_gau() {
 	if ! [ -x "$(command -v gau)" ]
 	then
@@ -751,7 +769,7 @@ install_gau() {
 	fi
 	}
 
-	
+
 
 install_massdns() {
 	if ! [ -x "$(command -v massdns)" ]
@@ -777,7 +795,7 @@ install_autorecon() {
 		git clone https://github.com/Tib3rius/AutoRecon.git >/dev/null 2>&1
 		cd AutoRecon
 		apt install seclists curl enum4linux gobuster nbtscan nikto nmap onesixtyone oscanner smbclient smbmap smtp-user-enum snmp sslscan sipvicious tnscmd10g whatweb wkhtmltopdf -y >/dev/null 2>&1
-		python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git >/dev/null 2>&1	
+		python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git >/dev/null 2>&1
 		mv ~/.local/bin/autorecon /usr/bin/autorecon >/dev/null 2>&1
 	else
 		echo $grn"autorecon appears to be installed already.  moving along..."$white
@@ -827,9 +845,9 @@ install_ciphey() {
 	else
 		echo $grn"ciphey appears to be installed already.  moving along..."$white
 	fi
-	
+
 	}
-	
+
 install_gospider() {
 	if ! [ -x "$(command -v gospider)" ]
 	then
@@ -871,25 +889,26 @@ else
 
 
 check_arg () {
-  if [ "$1" == "" ] 
-  then 
+  if [ "$1" == "" ]
+  then
     skip=0
   else
-    case $1 in 
-    --skip) skip=1 ;; 
+    case $1 in
+    --skip) skip=1 ;;
     esac
     fi
   }
-  
+
 
 
 check_arg "$1"
 fix_sources
+install_docker
 install_go
 install_pip
 install_pip3
 install_terminator
-pimpmykali $skip 
+pimpmykali $skip
 install_ffuf
 install_p0wny_shell
 install_dirsearch
@@ -946,7 +965,7 @@ install_wesng
 sleep 2
 
 
-  
+
 
 clear
 echo "            Holy crap!!!  It's over!  FREEEEEEDOOOOOMMMMEEE!"
