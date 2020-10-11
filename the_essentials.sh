@@ -868,7 +868,7 @@ FOLDER=/opt/php-reverse-shell
 if [ -d "$FOLDER" ]
 then
 	echo $grn"php-reverse-shell seems to already exist.  moving along..."$white
-else	
+else
 	echo $grn"Setting up php-reverse-shell..."$white
 	cd /opt/
 	sudo git clone https://github.com/pentestmonkey/php-reverse-shell >/dev/null 2>&1
@@ -979,15 +979,17 @@ install_instashell
 install_wesng
 sleep 2
 
-
-
-
 clear
-echo "            Holy crap!!!  It's over!  FREEEEEEDOOOOOMMMMEEE!"
-echo "                   Now go forth and always remember..."
-echo $red" _                _      _   _                  _                  _   "
-echo "| |__   __ _  ___| | __ | |_| |__   ___   _ __ | | __ _ _ __   ___| |_ "
-echo "| '_ \ / _\` |/ __| |/ / | __| '_ \ / _ \ | '_ \| |/ _\` | '_ \ / _ \ __|"
-echo "| | | | (_| | (__|   <  | |_| | | |  __/ | |_) | | (_| | | | |  __/ |_ "
-echo "|_| |_|\__,_|\___|_|\_\  \__|_| |_|\___| | .__/|_|\__,_|_| |_|\___|\__|"
-echo "                        $grn the-essentials $red |_| $grn blindpentester   "$white
+hackthe=$(base64 -d <<< "H4sIAAAAAAAAA42RQRKAMAgD77yifCOn/v9VQgqFVg9WBzcBojPK+Doy5xyDxeuCoGyE+eWGNeVt
+XfQ3RreVpLEX3iX7pJEolXLvIJ7wDnlNigEvWkGVYHqWyqy+owr7DFUnX+2U76W1f0LwMWkpFoJo
+FqGFoKk10ic9AVTg3kE85ZW8JgXuwWsRa1J6KwK77r4BZFBE3QTe6bWYerC/5iAPqtoU7sQCAAA=" | gunzip )
+
+signature=$(base64 -d <<< "H4sIAAAAAAAAA+NSwAQlGakKqcXFqXklmYk5xVYKSTmZeSkFQG5qcUlqERcAZSBxOjMAAAA=" | gunzip )
+
+planet=$(base64 -d <<< "H4sIAAAAAAAAA5WOSxKAIAxD95yiuUZXvf+ppOkHUGccqzKPhBCHcCwmSGQXS6slxYRx5G3Pn2e/
+8ugGyIs2n9MlZxo8CUt6ah7H7pKrGxb2pO6GZcavQBKgKL+7/XoEdXeI1Rjko+13WuWVMnPQ8jOt
+S20k8D9vtA5WeoV1vr6lpLluS7jkCneWPvfx1TW11S7SMUd+z7gATOZhtKQCAAA=" | gunzip )
+
+echo -e "$red$hackthe$white"
+echo -e "$grn$signature$white"
+echo -e "$red$planet$white"
