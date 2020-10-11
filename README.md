@@ -14,7 +14,7 @@ python-pip
 python3-pip  
 
 ### Installing the following items:  
-  
+* docker    
 * golang  
 * python-pip  
 * python3-pip  
@@ -67,7 +67,9 @@ python3-pip
 * Atom 
 * ciphey  
 * gospider  
+* php-reverse-shell
 * instashell  
+* wesng  
   
 ## v0.02
 * Checks for installs and will move to the next if it sees file/folder exists already.  This way it will only add the items that you currently don't have or will skip and continue through.
