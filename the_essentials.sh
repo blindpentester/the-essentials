@@ -41,7 +41,7 @@ then
 	apt-get install docker-ce -y >/dev/null 2>&1
 
 else
-	echo $grn"docker appears to be installed already.  moving along..."$white
+	echo $grn"docker appears to be installed already. checking on what version to only have docker-ce..."$white
 	apt-get remove docker docker-engine docker.io >/dev/null 2>&1
 	apt-get install docker-ce -y >/dev/null 2>&1
 
