@@ -1,5 +1,7 @@
 # the-essentials v0.02  
 A script that I made to get the essential tools I use for various reasons on Kali Linux.<br /><br />
+![HackThePlanet](https://i.ibb.co/5YmrMHZ/htp.pngZ)    
+
 ## Usage:  
     cd /opt  
     sudo git clone https://github.com/blindpentester/the-essentials.git  
