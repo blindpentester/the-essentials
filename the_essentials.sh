@@ -897,7 +897,7 @@ then
 else
 	echo $grn"Installing wesng..."$white
 	cd /opt
-	git clone https://github.com/bitsadmin/wesng
+	git clone https://github.com/bitsadmin/wesng >/dev/null 2>&1
 	fi
 }
 
