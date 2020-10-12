@@ -15,10 +15,10 @@ white=$'\e[0m'
 
 skip=0    # Add skip=0 up here by colors
 
-if [ "$EUID" -ne 0 ]
+	if [ "$EUID" -ne 0 ]
 	then echo -e $grn"\n\n Script must be run with sudo ./the_essentials.sh or as root \n"$grn
-       exit
-fi
+	exit
+	fi
 
 
 
@@ -32,19 +32,18 @@ fix_sources() {
 
 
 install_docker() {
-if ! [ -x "$(command -v docker)" ]
-then
-	echo $grn"Installing docker..."$white
-	curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - >/dev/null 2>&1
-	echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null 2>&1
-	sudo apt-get update >/dev/null 2>&1
-	apt-get install docker-ce -y >/dev/null 2>&1
+	if ! [ -x "$(command -v docker)" ]
+	then
+		echo $grn"Installing docker..."$white
+		curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - >/dev/null 2>&1
+		echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null 2>&1
+		sudo apt-get update >/dev/null 2>&1
+		apt-get install docker-ce -y >/dev/null 2>&1
 
-else
-	echo $grn"docker appears to be installed already. checking on what version to only have docker-ce..."$white
-	apt-get remove docker docker-engine docker.io >/dev/null 2>&1
-	apt-get install docker-ce -y >/dev/null 2>&1
-
+	else
+		echo $grn"docker appears to be installed already. checking on what version to only have docker-ce..."$white
+		apt-get remove docker docker-engine docker.io >/dev/null 2>&1
+		apt-get install docker-ce -y >/dev/null 2>&1
 	fi
 
 	}
@@ -53,25 +52,25 @@ else
 
 install_go() {
 	if ! [ -x "$(command -v go)" ]
-    then
-        echo $grn"Installing golang..."$white
-        apt install golang -y >/dev/null 2>&1
-    else
-        echo $grn"golang already installed. move along..."$white
-    fi
+	then
+        	echo $grn"Installing golang..."$white
+        	apt install golang -y >/dev/null 2>&1
+	else
+        	echo $grn"golang already installed. move along..."$white
+	fi
 	}
 
 
 install_pip() {
-    if ! [ -x "$(command -v pip)" ]
-    then
-        echo $grn"Installing pip..."$white
-        curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py >/dev/null 2>&1
-        python get-pip.py >/dev/null 2>&1
-        rm get-pip.py
-    else
-        echo $grn"python-pip already installed. move along..."$white
-    fi
+	 if ! [ -x "$(command -v pip)" ]
+	then
+        	echo $grn"Installing pip..."$white
+        	curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py >/dev/null 2>&1
+        	python get-pip.py >/dev/null 2>&1
+        	rm get-pip.py
+    	else
+        	echo $grn"python-pip already installed. move along..."$white
+	fi
 
         }
 
@@ -860,7 +859,7 @@ install_gospider() {
 	else
 		echo $grn"gospider appears to be installed already.  moving along..."$white
 	fi
-}
+	}
 
 
 install_phprevshell() {
@@ -885,21 +884,21 @@ install_instashell() {
 		echo $grn"Installing instashell..."$white
 		cd /opt
 		git clone https://github.com/NathanLundner/instashell >/dev/null 2>&1
-fi
-}
+	fi
+	}
 
 
 install_wesng(){
-FOLDER=/opt/wesng
-if [ -d "$FOLDER" ]
-then
-	echo $grn"wesng appears to be installed already.  moving along..."$white
-else
-	echo $grn"Installing wesng..."$white
-	cd /opt
-	git clone https://github.com/bitsadmin/wesng >/dev/null 2>&1
+	FOLDER=/opt/wesng
+	if [ -d "$FOLDER" ]
+	then
+		echo $grn"wesng appears to be installed already.  moving along..."$white
+	else
+		echo $grn"Installing wesng..."$white
+		cd /opt
+		git clone https://github.com/bitsadmin/wesng >/dev/null 2>&1
 	fi
-}
+	}
 
 
 check_arg () {
