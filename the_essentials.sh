@@ -899,6 +899,24 @@ install_wesng(){
 		git clone https://github.com/bitsadmin/wesng >/dev/null 2>&1
 	fi
 	}
+	
+	
+install_metabigor() {
+if ! [ -x "$(command -v metabigor)" ]
+	then
+		echo $grn"Installing metabigor..."$white
+		cd /opt
+		git clone https://github.com/j3ssie/metabigor >/dev/null 2>&1
+		cd metabigor
+		sudo go get -u github.com/j3ssie/metabigor >/dev/null 2>&1
+		cd /root/go/src/github.com/j3ssie/metabigor
+		go build >/dev/null 2>&1
+		cp metabigor /opt/metabigor/
+		ln -sf /opt/metabigor/metabigor /usr/bin/metabigor
+	else
+			echo $grn"metabigor appears to be installed already.  moving along..."$white
+		fi
+		}
 
 
 check_arg () {
@@ -976,6 +994,7 @@ install_gospider
 install_phprevshell
 install_instashell
 install_wesng
+install_metabigor
 sleep 2
 
 clear
