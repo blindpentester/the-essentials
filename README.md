@@ -72,6 +72,7 @@ python3-pip
 * php-reverse-shell
 * instashell  
 * wesng  
+* metabigor  
   
 ## v0.02
 * Checks for installs and will move to the next if it sees file/folder exists already.  This way it will only add the items that you currently don't have or will skip and continue through.
