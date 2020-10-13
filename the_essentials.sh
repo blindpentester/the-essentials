@@ -109,7 +109,6 @@ pimpmykali() {
       if [ -f "$FILE" ]
       then
         echo $grn"$FILE already exists.  Skipping to next item."$white
-        install_ffuf
         else
         echo "***************************************"
         echo "*                                     *"
