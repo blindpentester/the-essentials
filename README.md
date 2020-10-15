@@ -73,6 +73,7 @@ python3-pip
 * instashell  
 * wesng  
 * metabigor  
+* asn  
   
 ## v0.02
 * Checks for installs and will move to the next if it sees file/folder exists already.  This way it will only add the items that you currently don't have or will skip and continue through.
