@@ -916,6 +916,19 @@ if ! [ -x "$(command -v metabigor)" ]
 			echo $grn"metabigor appears to be installed already.  moving along..."$white
 		fi
 		}
+		
+		
+install_asn() {
+if ! [ -x "$(command -v asn)" ]
+	then
+		echo $grn"Installing asn..."$white
+		cd /opt
+		git clone https://github.com/nitefood/asn >/dev/null 2>&1
+		ln -sf /opt/asn/asn /usr/bin/asn
+	else
+		echo $grn"asn appears to be installed already.  moving along..."$white
+	fi
+	}
 
 
 check_arg () {
