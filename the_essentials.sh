@@ -679,7 +679,7 @@ install_dnsdumpster() {
 	}
 
 
-install_github_search() {
+#install_github_search() {
 	FOLDER=/opt/github-search
 	if [ -d "$FOLDER" ]
 	then
@@ -991,7 +991,7 @@ install_threader3000
 install_locate
 install_seclists
 install_dnsdumpster
-install_github_search
+#install_github_search
 install_shodan_cli
 install_interlace
 install_certspotter
