@@ -989,7 +989,7 @@ install_sherlock
 install_threader3000
 install_locate
 install_seclists
-install_dnsdumpster
+#install_dnsdumpster
 #install_github_search
 install_shodan_cli
 install_interlace
