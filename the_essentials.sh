@@ -678,8 +678,7 @@ install_dnsdumpster() {
 	fi
 	}
 
-
-#install_github_search() {
+install_github_search() {
 	FOLDER=/opt/github-search
 	if [ -d "$FOLDER" ]
 	then
