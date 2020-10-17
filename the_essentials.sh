@@ -1007,7 +1007,7 @@ install_instashell
 install_wesng
 install_metabigor
 sleep 2
-apt --fix-broken install >/dev/null 2>&1
+apt -y --fix-broken install >/dev/null 2>&1
 
 echo ""
 echo ""
