@@ -1007,6 +1007,7 @@ install_instashell
 install_wesng
 install_metabigor
 sleep 2
+apt --fix-broken install >/dev/null 2>&1
 
 clear
 hackthe=$(base64 -d <<< "H4sIAAAAAAAAA21M0RUAIQj6b4pYgy/2n+pKKat3lQYIttbHkVQtfgMdox/NgrwESzVAxjwqBjz2
