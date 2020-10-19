@@ -828,6 +828,7 @@ install_atom() {
 		wget -qO- https://atom.io/download/deb -O atom.deb >/dev/null 2>&1
 		dpkg -i atom.deb >/dev/null 2>&1
 		rm atom.deb
+		apt -y --fix-broken install >/dev/null 2>&1
 	else
 		echo $grn"atom appears to be installed already.  moving along..."$white
 	fi
