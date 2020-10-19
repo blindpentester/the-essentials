@@ -862,15 +862,15 @@ install_gospider() {
 
 
 install_phprevshell() {
-FOLDER=/opt/php-reverse-shell
-if [ -d "$FOLDER" ]
-then
-	echo $grn"php-reverse-shell seems to already exist.  moving along..."$white
-else
-	echo $grn"Setting up php-reverse-shell..."$white
-	cd /opt/
-	sudo git clone https://github.com/pentestmonkey/php-reverse-shell >/dev/null 2>&1
-fi
+	FOLDER=/opt/php-reverse-shell
+	if [ -d "$FOLDER" ]
+	then
+		echo $grn"php-reverse-shell seems to already exist.  moving along..."$white
+	else
+		echo $grn"Setting up php-reverse-shell..."$white
+		cd /opt/
+		sudo git clone https://github.com/pentestmonkey/php-reverse-shell >/dev/null 2>&1
+	fi
 }
 
 
