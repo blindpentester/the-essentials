@@ -931,6 +931,21 @@ if ! [ -x "$(command -v asn)" ]
 	}
 
 
+install_mindmaster() {
+	if ! [ -x "$(command -v mindmaster)" ]
+	then
+		echo $grn"Installing mindmaster..."$white
+		cd ~/Downloads
+		mmaster=$(wget -qO- https://www.edrawsoft.com/download-mindmaster.html | grep ".deb" | awk -F "<a href=" '{print $2}' | cut -d " " -f 1 | sed 's/"//g') >/dev/null 2>&1
+		wget $mmaster >/dev/null 2>&1
+		dpkg -i mindmaster_*.deb >/dev/null 2>&1
+		rm mindmaster_*.deb
+	else
+		echo $grn"mindmaster appears to be installed already.  moving along..."$white
+	fi
+	}
+
+
 check_arg () {
   if [ "$1" == "" ]
   then
@@ -990,7 +1005,7 @@ install_sherlock
 install_threader3000
 install_locate
 install_seclists
-#install_dnsdumpster
+install_dnsdumpster
 #install_github_search
 install_shodan_cli
 install_interlace
@@ -1007,6 +1022,7 @@ install_phprevshell
 install_instashell
 install_wesng
 install_metabigor
+install_mindmaster
 sleep 2
 apt -y --fix-broken install >/dev/null 2>&1
 
