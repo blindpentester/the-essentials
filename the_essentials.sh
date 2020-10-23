@@ -957,7 +957,7 @@ install_pspy() {
 		cd /opt
 		git clone https://github.com/DominicBreuker/pspy >/dev/null 2>&1
 		mkdir -p pspy/binaries
-		echo $grn"Snagging pspy binaries to /opt/pspy/binaries..."$white
+		echo $grn"	Snagging pspy binaries to /opt/pspy/binaries..."$white
 		wget -qO- https://github.com/DominicBreuker/pspy | grep "download/" | awk -F "a href=" '{print $2}' | awk -F ">" '{print $1}' | sed 's/"//g'| sed 's/^/wget /g' > /opt/pspy/binaries/snagem.sh
 		cd /opt/pspy/binaries
 		bash snagem.sh >/dev/null 2>&1
