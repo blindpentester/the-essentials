@@ -898,8 +898,8 @@ install_wesng(){
 		git clone https://github.com/bitsadmin/wesng >/dev/null 2>&1
 	fi
 	}
-	
-	
+
+
 install_metabigor() {
 if ! [ -x "$(command -v metabigor)" ]
 	then
@@ -916,8 +916,8 @@ if ! [ -x "$(command -v metabigor)" ]
 			echo $grn"metabigor appears to be installed already.  moving along..."$white
 		fi
 		}
-		
-		
+
+
 install_asn() {
 if ! [ -x "$(command -v asn)" ]
 	then
@@ -943,6 +943,27 @@ install_mindmaster() {
 	else
 		echo $grn"mindmaster appears to be installed already.  moving along..."$white
 	fi
+	}
+
+
+
+install_pspy() {
+	FILE=/opt/pspy/binaries/pspy32s
+	if [ -f "$FILE" ]
+	then
+		echo $grn"pspy appears to be installed already.  moving along..."$white
+	else
+		echo $grn"Installing pspy"$white
+		cd /opt
+		git clone https://github.com/DominicBreuker/pspy >/dev/null 2>&1
+		mkdir -p pspy/binaries
+		echo $grn"Snagging pspy binaries..."$white
+		wget -qO- https://github.com/DominicBreuker/pspy | grep "download/" | awk -F "a href=" '{print $2}' | awk -F ">" '{print $1}' | sed 's/"//g'| sed 's/^/wget /g' > /opt/pspy/binaries/snagem.sh
+		cd /opt/pspy/binaries
+		bash snagem.sh >/dev/null 2>&1
+		rm snagem.sh
+	fi
+
 	}
 
 
@@ -1023,6 +1044,7 @@ install_instashell
 install_wesng
 install_metabigor
 install_mindmaster
+install_pspy
 sleep 2
 apt -y --fix-broken install >/dev/null 2>&1
 
