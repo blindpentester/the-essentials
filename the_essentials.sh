@@ -1019,14 +1019,14 @@ install_stegoVeritas
 install_crackmapexec
 snag_random_repos
 install_dnstwist
-install_spoofcheck
+#install_spoofcheck
 install_autoenum
 install_easysploit
 install_sherlock
 install_threader3000
 install_locate
 install_seclists
-install_dnsdumpster
+#install_dnsdumpster
 #install_github_search
 install_shodan_cli
 install_interlace
