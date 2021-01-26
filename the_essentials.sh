@@ -547,9 +547,9 @@ install_crackmapexec() {
 	}
 
 snag_random_repos() {
-	echo $grn"Setting up OSCP Prep Material, SUID3NUM, linuxprivchecker and The Bug Bounty Methodology..."$white
+	echo $grn"Setting up SUID3NUM, linuxprivchecker and The Bug Bounty Methodology..."$white
 	cd /opt
-	git clone https://github.com/thelinuxchoice/OSCP-Preparation-Material.git >/dev/null 2>&1
+#	git clone https://github.com/thelinuxchoice/OSCP-Preparation-Material.git >/dev/null 2>&1
 	git clone https://github.com/Anon-Exploiter/SUID3NUM.git >/dev/null 2>&1
 	git clone https://github.com/sleventyeleven/linuxprivchecker.git >/dev/null 2>&1
 	git clone https://github.com/jhaddix/tbhm.git >/dev/null 2>&1
