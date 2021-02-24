@@ -965,6 +965,25 @@ install_pspy() {
 	fi
 
 	}
+	
+	
+	
+install_feroxbuster() {
+        FOLDER=/opt/feroxbuster
+        if [ -d "$FOLDER" ]
+        then
+                echo "feroxbuster seems to be installed already.  movin>
+        else
+                echo "Installing feroxbuster..."
+                cd /opt
+                git clone https://github.com/epi052/feroxbuster
+                cd feroxbuster
+                ./install-nix.sh
+                ln -sf /opt/feroxbuster/feroxbuster /usr/bin/feroxbuster
+        fi
+
+        }
+
 
 
 check_arg () {
@@ -1045,6 +1064,7 @@ install_wesng
 install_metabigor
 install_mindmaster
 install_pspy
+install_feroxbuster
 sleep 2
 apt -y --fix-broken install >/dev/null 2>&1
 
