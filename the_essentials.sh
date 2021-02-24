@@ -972,14 +972,14 @@ install_feroxbuster() {
         FOLDER=/opt/feroxbuster
         if [ -d "$FOLDER" ]
         then
-                echo "feroxbuster seems to be installed already.  movin>
+                echo $grn"feroxbuster seems to be installed already.  moving along..."$white
         else
-                echo "Installing feroxbuster..."
+                echo $grn"Installing feroxbuster..."$white
                 cd /opt
-                git clone https://github.com/epi052/feroxbuster
+                git clone https://github.com/epi052/feroxbuster >/dev/null 2>&1
                 cd feroxbuster
                 ./install-nix.sh
-                ln -sf /opt/feroxbuster/feroxbuster /usr/bin/feroxbuster
+                ln -sf /opt/feroxbuster/feroxbuster /usr/bin/feroxbuster >/dev/null 2>&1
         fi
 
         }
@@ -1064,7 +1064,7 @@ install_wesng
 install_metabigor
 install_mindmaster
 install_pspy
-
+install_feroxbuster
 sleep 2
 apt -y --fix-broken install >/dev/null 2>&1
 
