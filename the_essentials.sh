@@ -1064,7 +1064,7 @@ install_wesng
 install_metabigor
 install_mindmaster
 install_pspy
-install_feroxbuster
+
 sleep 2
 apt -y --fix-broken install >/dev/null 2>&1
 
