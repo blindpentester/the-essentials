@@ -31,7 +31,7 @@ find /opt -maxdepth 1 -type d -exec bash -c 'cd "{}"; git pull;' \;>/dev/null 2>
 # Function to check version numbers of repository releases
 check_latest_version() {
     repository=$1
-    latest_version=$(curl --silent https://api.github.com/repos/"$repository"/releases/latest)
+    latest_version=$(curl --silent https://api.github.com/repos/"$repository"/releases/latest | jq -r '.tag_name')
     echo "Latest version of $repository is: $latest_version"
 }
 
