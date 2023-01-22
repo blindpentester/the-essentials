@@ -1135,40 +1135,40 @@ install_pspy() {
 	
 	
 	
-install_feroxbuster(){
+install_feroxbuster() {
 FEROXBUSTER_URL="https://github.com/epi052/feroxbuster"
 FEROXBUSTER_DIR="/opt/feroxbuster"
 
 function download_and_install {
 	local url="$1"
-	local dir="$2"
+        local dir="$2"
 
-	# Download the latest version
-	echo "${green}Downloading feroxbuster from $url...${white}"
-	git clone "$url" "$dir" >/dev/null 2>&1
+        # Download the latest version
+        echo "Downloading feroxbuster from $url..."
+        git clone "$url" "$dir" >/dev/null 2>&1
 
-	# Install feroxbuster
-	echo "${green}Installing feroxbuster...${white}"
-	cd "$dir"
-	./install-nix.sh >/dev/null 2>&1
+        # Install feroxbuster
+        echo "Installing feroxbuster..."
+        cd "$dir"
+        ./install-nix.sh >/dev/null 2>&1
 }
 
 if command -v feroxbuster >/dev/null 2>&1; then
-	echo "${green}Feroxbuster is already installed. Checking for updates...${white}"
+        echo "Feroxbuster is already installed. Checking for updates..."
 
-	current_ver=$(feroxbuster -V | cut -d " " -f2)
-	latest_ver=$(curl -s https://api.github.com/repos/epi052/feroxbuster/releases/latest | grep -oP '"tag_name": "\K(v[\d.]+)'|cut -d "v" -f2)
+        current_ver=$(feroxbuster -V | cut -d " " -f2)
+        latest_ver=$(curl -s https://api.github.com/repos/epi052/feroxbuster/releases/latest | grep -oP '"tag_name": "\K(v[\d.]+)'|cut -d "v" -f2)
 
-	if [ "$current_ver" != "$latest_ver" ]; then
-		download_and_install "$FEROXBUSTER_URL" "$FEROXBUSTER_DIR" >/dev/null 2>&1
-	else
-		echo "${green}Feroxbuster is up to date.${white}"
-		fi
-	else
-		download_and_install "$FEROXBUSTER_URL" "$FEROXBUSTER_DIR" >/dev/null 2>&1
+        if [ "$current_ver" != "$latest_ver" ]; then
+                download_and_install "$FEROXBUSTER_URL" "$FEROXBUSTER_DIR" >/dev/null 2>&1
+        else
+                echo "Feroxbuster is up to date."
 	fi
+else
+		download_and_install "$FEROXBUSTER_URL" "$FEROXBUSTER_DIR" >/dev/null 2>&1
+fi
 
-	}
+}
 
 
 
