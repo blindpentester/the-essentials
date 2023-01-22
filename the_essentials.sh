@@ -180,8 +180,8 @@ install_dirsearch() {
 		cd dirsearch
 		python3 setup.py install >/dev/null 2>&1
 	else
-		echo "${green}dirsearch appears to be installed already.  moving along...${white}"
-		echo "${green}checking to see if it is up to date...${white}"
+		echo "${green}dirsearch appears to be installed already.${white}"
+		echo "${green}		checking to see if it is up to date...${white}"
 
 		# Store the current version of dirsearch on the system
 		dirsearchCurrentVer=$(dirsearch --version | cut -d " " -f2)
@@ -197,7 +197,7 @@ install_dirsearch() {
 		git pull >/dev/null 2>&1
 		python3 setup.py install >/dev/null 2>&1
 	else
-		echo "${green}dirsearch is already up-to-date${white}"
+		echo "${green}		dirsearch is already up-to-date${white}"
 		fi
 
 	fi
