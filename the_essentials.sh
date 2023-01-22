@@ -1133,28 +1133,7 @@ install_pspy() {
 
 	}
 	
-	
-	
-#!/bin/bash
 
-install_feroxbuster() {
-	if ! [ -x "$(command -v feroxbuster)" ];then
-		echo "${green}Installing feroxbuster...${white}"
-		apt install feroxbuster -y >/dev/null 2>&1
-	else
-		echo "${green}feroxbuster seems its installed already, lets see if it needs updates...${white}"
-		current_ver=$(feroxbuster -V | cut -d " " -f2)
-		latest_ver=$(curl -s https://api.github.com/repos/epi052/feroxbuster/releases/latest | jq -r '.tag_name' | sed 's/v//')
-		
-		if [ "$current_ver" != "$latest_ver" ]; then
-		echo "${green}A newer version of feroxbuster is available. Updating...${white}"
-		apt upgrade feroxbuster -y >/dev/null 2>&1
-	else
-		echo "${green}Feroxbuster is up to date.${white}"
-	fi
-fi
-	
-}
 
 install_feroxbuster() {
 	if ! [ -x "$(command -v feroxbuster)" ];then
