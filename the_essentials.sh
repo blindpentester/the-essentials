@@ -192,7 +192,7 @@ install_dirsearch() {
 		# Compare the two version numbers
         if [[ $dirsearchCurrentVer != $dirsearchlatestver ]]; then
 		# Download the latest version
-		echo "${green}Does not show you are on the current version, lets fix thatinstall_dirsearch${white}"
+		echo "${green}Does not show you are on the current version, lets fix that...${white}"
 		cd $DIRSEARCH_FOLDER
 		git pull >/dev/null 2>&1
 		python3 setup.py install >/dev/null 2>&1
