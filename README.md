@@ -16,7 +16,9 @@ python-pip
 python3-pip  
 
 ### Installing the following items:  
+* Runs a check on repos that are already in /opt and updates them all with "git pull" requests
 * jq  
+    * if installed will run apt upgrade for it  
 * fix sources  
 * docker  
 * go  
@@ -25,22 +27,25 @@ python3-pip
 * terminator  
 * pimpmykali  
 * ffuf  
+    * if installed will perform version check to auto upgrade
 * dirsearch  
+    * if installed will perform version check to auto upgrade
 * PEASS - updated version of "privilege-escalation-awesome-scripts-suite"  
-  also downloads their precompiled binaries for ease of use  
+    * also downloads their precompiled binaries for ease of use  
 * LinEnum  
 * aquatone  
-  with version check and auto upgrading  
+    * if installed will perform version check to auto upgrade
 * rsg  
-  Updated to have local version of revshells.com
+    * Updated to have local version of revshells.com  
 * nmap_vulners  
 * gtfoblookup  
 * navi  
-* httprobe  
-* waybackurls  
-* unfurl  
-* fff  
-* hacks  
+* tomnomnom toys  
+    * httprobe  
+    * waybackurls  
+    * unfurl  
+    * fff  
+    * hacks  
 * nahamsec_stuff  
 * neo4j  
 * bloodhound  
@@ -70,9 +75,11 @@ python3-pip
 * certspotter  
 * cloudbrute  
 * gau  
+    * if installed will perform version check to auto upgrade
 * massdns  
 * autorecon  
 * hetty  
+    * if installed will perform version check to auto upgrade
 * gospider  
 * phprevshell  
 * instashell  
@@ -80,6 +87,7 @@ python3-pip
 * metabigor  
 * pspy  
 * feroxbuster  
+    * if installed will perform version check to auto upgrade
   
   
 ## v0.03
