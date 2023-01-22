@@ -1,4 +1,4 @@
-# the-essentials v0.02  
+# the-essentials v0.03  
 A script that I made to get the essential tools I use for various reasons on Kali Linux.<br /><br />
 ![HackThePlanet](https://i.ibb.co/5YmrMHZ/htp.pngZ)    
 
@@ -77,6 +77,14 @@ python3-pip
 * mindmaster  
 * pspy  
 * feroxbuster  
+  
+  
+## v0.03
+* Updated methods for finding binaries for github since github changed they way they are indexing them now.  
+* Came up with using new indexing Github is using a way to do version checks on some of these items and check against what the latetest version the github repository has.  If they do not match, they will be downloaded, and instaled.  This is not being done with all items yet, but now I know how this can work and I will be rolling it out for the rest of the items when I have more time.  Some things are just able to be installed witht apt install and updatable with apt upgrade so if that is the case, ill just use that over the github method.  It works though, check out the fucntion "install_aquatone" to see.
+* Overall cleanup of ways i was using bash and looking for ways to sharpen and refine the functions to make them more robust and functional.
+* When i have more time, i'll be rolling out more toys/tools with this.
+* Thanks for sticking around.
   
 ## v0.02
 * Checks for installs and will move to the next if it sees file/folder exists already.  This way it will only add the items that you currently don't have or will skip and continue through.
