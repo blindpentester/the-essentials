@@ -16,41 +16,47 @@ python-pip
 python3-pip  
 
 ### Installing the following items:  
-* docker    
-* golang  
+* jq  
+* fix sources  
+* docker  
+* go  
 * python-pip  
 * python3-pip  
 * terminator  
-* "pimpmykali" from https://github.com/Dewalt-arch/pimpmykali  
+* pimpmykali  
 * ffuf  
-* p0wny-shell  
 * dirsearch  
-* privilege-escalation-awesome-scripts-suite  
+* PEASS - updated version of "privilege-escalation-awesome-scripts-suite"  
+  also downloads their precompiled binaries for ease of use  
 * LinEnum  
 * aquatone  
-* Reverse Shell Generator  
-* nmap vulners  
+  with version check and auto upgrading  
+* rsg  
+  Updated to have local version of revshells.com
+* nmap_vulners  
 * gtfoblookup  
 * navi  
 * httprobe  
 * waybackurls  
 * unfurl  
 * fff  
-* crtndstry  
-* neo4j & Bloodhound  
-* SharpHound  
+* hacks  
+* nahamsec_stuff  
+* neo4j  
+* bloodhound  
 * sublist3r  
 * asnlookup  
-* Evil-WinRM  
-* Powercat  
-* Snagging more Wordlists  
+* evil_winrm  
+* powercat  
+* more_wordlists  
 * gobuster  
-* recursive-gobuster  
-* evilportals (WiFi Pineapple Evil Portals)  
-* stegoVertias  
-* CrackMapExec  
+* recursivegobuster  
+* enum4linux_ng  
+* evilportals_wifipineapple  
+* stegoVeritas  
+* crackmapexec  
+* extra repositories  
 * dnstwist  
-* spoofcheck  
 * autoenum  
 * easysploit  
 * sherlock  
@@ -58,23 +64,20 @@ python3-pip
 * locate  
 * seclists  
 * dnsdumpster  
-* shodan cli  
-* Interlace  
+* github_search  
+* shodan_cli  
+* interlace  
 * certspotter  
 * cloudbrute  
-* gau   
+* gau  
 * massdns  
-* AutoRecon  
+* autorecon  
 * hetty  
-* Atom 
-* ciphey  
 * gospider  
-* php-reverse-shell
+* phprevshell  
 * instashell  
 * wesng  
 * metabigor  
-* asn  
-* mindmaster  
 * pspy  
 * feroxbuster  
   
