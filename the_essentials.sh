@@ -72,7 +72,8 @@ install_go() {
 		echo "${green}Installing golang...${white}"
 		apt install golang -y >/dev/null 2>&1
 	}
-		command -v go >/dev/null 2>&1 && echo "${green}golang already installed, move along...${white}"
+		command -v go >/dev/null 2>&1 && echo "${green}golang already installed, lets see if it needs to be updated...${white}"
+		apt upgrade golang -y >/dev/null 2>&1
 	}
 
 
@@ -769,7 +770,7 @@ install_locate() {
 	then
 		echo "${green}Installing locate...${white}"
 		apt install locate -y >/dev/null 2>&1
-		updatedb 1>/dev/null
+		updatedb
 	else
 		echo "${green}locate appears to be installed already.  moving along...${white}"
 	fi
@@ -843,7 +844,7 @@ install_interlace() {
 		cd /opt/
 		git clone https://github.com/codingo/Interlace.git >/dev/null 2>&1
 		cd Interlace
-		pip3 install --root-user-action=ignore -r requirements.txt 1>/dev/null
+		#pip3 install --root-user-action=ignore -r requirements.txt 1>/dev/null
 		python3 setup.py install >/dev/null 2>&1
 	fi
 	}
