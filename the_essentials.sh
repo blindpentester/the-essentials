@@ -75,13 +75,14 @@ install_docker() {
 
 
 install_go() {
-	command -v go >/dev/null 2>&1 || {
-		echo "${green}Installing golang...${white}"
-		apt install golang -y >/dev/null 2>&1
-	}
-		command -v go >/dev/null 2>&1 && echo "${green}golang already installed, lets see if it needs to be updated...${white}"
-		apt upgrade golang -y >/dev/null 2>&1
-	}
+    if ! command -v go >/dev/null 2>&1; then
+        echo "${green}Installing golang...${white}"
+        apt install golang -y >/dev/null 2>&1
+    else
+        echo "${green}golang already installed, lets see if it needs to be updated...${white}"
+        apt upgrade golang -y >/dev/null 2>&1
+    fi
+}
 
 
 
